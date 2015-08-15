@@ -1,5 +1,11 @@
-###yiifcms打造顶级内容管理系统
+
+###myyiicms 基于 yiifcms的学习版本
 ======
+
+my yii cms 是基于yiifcms的学习版本
+感谢yiifcms作者(QQ:326196998)给予的支持 
+
+yiifcms具体介绍如下：
 
 yiifcms是基于yii framework 1.1.14 个人开发的cms  目前已开发到 1.4.0版本
 
