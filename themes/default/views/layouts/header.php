@@ -6,7 +6,7 @@
 	<meta name="language" content="<?php echo $this->_yii->language;?>" />
 	<meta name="keywords" content="<?php echo $this->_seoKeywords;?>" />
 	<meta name="description" content="<?php echo $this->_seoDescription;?>" />
-    <meta name="author" content="Sim <326196998@qq.com>" />
+    <meta name="author" content="uxff <uxff@qq.com>" />
     <meta name="cmsVersion" content="<?php echo $this->_cmsVersion;?>" />
     <meta name="cmsRelease" content="<?php echo $this->_cmsRelease;?>" />
 	<meta property="qc:admins" content="3621316677611163536375" />
@@ -16,6 +16,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="HandheldFriendly" content="true">
 	<link rel="stylesheet" type="text/css" media="only screen and (max-width:720px),only screen and (max-device-width:720px)" href="<?php echo $this->_stylePath;?>/css/media.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->_stylePath;?>/css/customer.css" />
 </head>
 <body>
 <!-- 头部header开始 -->

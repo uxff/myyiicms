@@ -1,0 +1,11 @@
+/*客服*/
+$(document).ready(function(){
+	$(".keful").mouseover(function(){
+		$(".keful").hide();
+		$(".kefur").show();
+	});
+	$(".kefucolose").click(function(){
+		$(".kefur").hide();
+		$(".keful").show();
+	});
+});
