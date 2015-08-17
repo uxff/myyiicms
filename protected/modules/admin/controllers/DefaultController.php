@@ -139,6 +139,7 @@ class DefaultController extends BackendBase
 					array('url'=> $this->createUrl('reply/index'), 'name'=>Yii::t('admin','Reply Manage')),
 					array('url'=> $this->createUrl('tag/index'), 'name'=>Yii::t('admin','Tags Manage')),
 					array('url'=> $this->createUrl('maillog/index'), 'name'=>Yii::t('admin','Maillog Manage')),
+					array('url'=> $this->createUrl('customer/index'), 'name'=>Yii::t('admin','Customer Manage')),
 			),
 			'7' => array(
 					array('url'=> $this->createUrl('modeltype/index'), 'name'=>Yii::t('admin','Modeltype Manage')),					

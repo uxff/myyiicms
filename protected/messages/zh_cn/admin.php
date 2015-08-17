@@ -40,6 +40,7 @@ return array (
 	'Logout' => '退出登录',
 	'Default' => '默认',
 	'Recommend' => '推荐',
+	'Preview' => '预览',
 	
 	/* 后台菜单 */
 	'BM_Home' =>'首页',
@@ -137,6 +138,7 @@ return array (
 	'Soft Manage' => '软件管理',
 	'Video Manage' => '视频管理',
 	'Goods Manage' => '商品管理',
+	'Customer Manage' => '客服管理',
 	'Comment Manage' => '评论管理',
 	'Reply Manage' => '回复管理',
 	'Special Manage' => '专题管理',
@@ -354,6 +356,7 @@ return array (
 	'Lan_other' => '未知字幕',
 	'File Names Contains doesnt recognize Chinese' => '文件名中含有不能识别的中文，请修改后再上传。',
 	'Goods Name' => '商品名称',
+	'Customer Name' => '客服名称',
 	'Comment Status' => '评论状态',
 	'Pass Checking' => '审核通过',
 	'Wait Checking' => '待审核',
@@ -383,5 +386,9 @@ return array (
 	'qq_scope_add_t' => '发布一条微博',
 	'qq_scope_del_t' => '删除一条微博',
 	'qq_scope_get_info' => '获取微博资料',
+	
+	/* 客服管理 */
+	'Contact Way' => '联系方式',
+	'Remark' => '备注',
 	
 );
