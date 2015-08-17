@@ -24,7 +24,7 @@ class Customer extends CActiveRecord
 		return array(
 			array('type, title, description', 'required'),
 			array('listorder, status', 'numerical', 'integerOnly'=>true),
-			array('user_id, view_count, favorite_count, update_time, reply_count, sort_desc, create_time', 'length', 'max'=>10),
+			//array('user_id, view_count, favorite_count, update_time, reply_count, sort_desc, create_time', 'length', 'max'=>10),
 			array('type, lang', 'length', 'max'=>20),
 			array('title', 'length', 'max'=>50),
 			array('type, title, description, remark, lang', 'safe'),
@@ -111,4 +111,15 @@ class Customer extends CActiveRecord
 		return $data;
 	}
 	
+	/**
+	 * 获取一定条件下的文章
+	 * @param array $params = ('condition'=> '额外条件', 'order'=>'排序', 'with'=>'关联表', 'limit'=>'条数', 'page'=>'是否分页')
+	 * @param $pages 分页widget
+	 * @return array
+	 */
+	public static function getTypes(){
+        return array(
+            'qq'=>'QQ','wangwang'=>'旺旺','email'=>'email'
+            );
+    }
 }

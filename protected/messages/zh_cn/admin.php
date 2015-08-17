@@ -388,6 +388,7 @@ return array (
 	'qq_scope_get_info' => '获取微博资料',
 	
 	/* 客服管理 */
+	'Contact Type' => '联系类型',
 	'Contact Way' => '联系方式',
 	'Remark' => '备注',
 	

@@ -85,4 +85,73 @@ class CustomerController extends Backend
         }
         return $html;
     }
+    /**
+     * 添加
+     *
+     * @param  $Customer
+     */
+    public function actionCreate ()
+    {
+    	$model = new Customer();
+    	if (isset($_POST['Customer'])) {
+    		$model->attributes = $_POST['Customer'];   
+    		
+    		if ($model->save()) {
+    			$this->message('success',Yii::t('admin','Add Success'), $this->createUrl('index')); 
+    		}
+    	}
+    
+    	//$this->render('group_create', array ('model' => $model , 'acls' => $this->acl()));
+        $this->render( 'update', array ( 'model' => $model ) );
+    }
+    
+    /**
+     * 更新
+     *
+     * @param  $id
+     */
+    public function actionUpdate( $id ) {
+        $model = Customer::model()->findByPk($id);
+        if ( isset( $_POST['Customer'] ) ) {
+            $model->attributes = $_POST['Customer'];
+            if ( $model->save() ) {
+                $this->message('success',Yii::t('admin','Update Success'),$this->createUrl('index'));
+            }
+        }
+        $this->render( 'update', array ( 'model' => $model ) );
+    }
+    /**
+     * 批量操作
+     *
+     */
+    public function actionBatch() {
+        if ( $this->method() == 'GET' ) {
+            $command = trim( $_GET['command'] );
+            $ids = intval( $_GET['id'] );
+        } elseif ( $this->method() == 'POST' ) {
+            $command = trim( $_POST['command'] );
+            $ids = $_POST['id'];
+        } else {
+            $this->message( 'errorBack', Yii::t('admin','Only POST Or GET') );
+        }
+        empty( $ids ) && $this->message( 'error', Yii::t('admin','No Select') );
+
+        switch ( $command ) {
+        case 'delete':      
+        	//删除商品     
+        	foreach((array)$ids as $id){
+        		$goodsModel = Customer::model()->findByPk($id);
+        		if($goodsModel){        			
+        			$goodsModel->delete();
+        		}
+        	}
+            break;
+       
+         default:
+            throw new CHttpException(404, Yii::t('admin','Error Operation'));
+            break;
+        }
+        $this->message('success', Yii::t('admin','Batch Operate Success').' Operate: '.$command);
+    }
+
 }
