@@ -112,9 +112,7 @@ class Customer extends CActiveRecord
 	}
 	
 	/**
-	 * 获取一定条件下的文章
-	 * @param array $params = ('condition'=> '额外条件', 'order'=>'排序', 'with'=>'关联表', 'limit'=>'条数', 'page'=>'是否分页')
-	 * @param $pages 分页widget
+	 * 获取联系类型 指定的字段
 	 * @return array
 	 */
 	public static function getTypes(){

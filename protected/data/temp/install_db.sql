@@ -624,4 +624,32 @@ CREATE TABLE `#@__video` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='视频管理表';
 
+-- ----------------------------
+-- 客户列表 -- xdr
+-- ----------------------------
+DROP TABLE IF EXISTS `#@__customer`;
+CREATE TABLE `#@__customer` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(20) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `remark` mediumtext NOT NULL,
+  `listorder` int(3) unsigned NOT NULL DEFAULT '999',
+  `status` tinyint(1) unsigned NOT NULL,
+  `lang` varchar(20) NOT NULL DEFAULT 'zh_cn',
+  PRIMARY KEY (`id`),
+  KEY `category` (`type`),
+  KEY `lang` (`lang`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records 
+-- ----------------------------
+INSERT INTO `#@__customer` VALUES ('1', 'qq', 'BUG提交', '154807895', '0', '2', '1', 'zh_cn');
+INSERT INTO `#@__customer` VALUES ('2', 'qq', '授权咨询', '154807895', '0', '1', '1', 'zh_cn');
+INSERT INTO `#@__customer` VALUES ('3', 'qq', '建站咨询', '154807895', '0', '3', '1', 'zh_cn');
+INSERT INTO `#@__customer` VALUES ('4', 'code', '联系电话', '<font color=\"red\"><b>13888888888</b></font>', '0', '6', '1', 'zh_cn');
+INSERT INTO `#@__customer` VALUES ('5', 'email', '开发者邮箱', 'uxff@qq.com', '0', '5', '1', 'zh_cn');
+INSERT INTO `#@__customer` VALUES ('6', 'wangwang', '旺旺客服', '15001100749', '0', '4', '1', 'zh_cn');
+
 

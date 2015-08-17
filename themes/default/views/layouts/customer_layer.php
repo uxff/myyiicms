@@ -22,7 +22,7 @@
 			<li><a href="mailto:<?=$item['description']?>"><img border=0 align=absMiddle src="<?php echo $this->_stylePath.'/images/email.gif';?>"></a>
 			 <a href="mailto:<?=$item['description']?>"><?=$item['title']?></a></li>
 		<?php endif;?>
-		<?php if($item['type']=='mobile'):?>
+		<?php if($item['type']=='code'):?>
 			<li><?=$item['description']?></li>
 		<?php endif;?>
 	<?php endforeach;?>
