@@ -43,6 +43,10 @@
 	</div>
 </div>
 <!-- 底部footer结束 -->
+<!-- 客服弹窗开始 -->
+ 
+<?php include(dirname(__FILE__).'/customer_layer.php');?>
+<!-- 客服弹窗结束 -->
 
 <!-- Js script开始 -->
 <script type="text/javascript" src="<?php echo $this->_stylePath;?>/js/common.js"></script>
