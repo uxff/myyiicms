@@ -73,9 +73,9 @@ $config = array(
 		
 		'db'=>array(
 				'class'=>'system.db.CDbConnection',				
-				'connectionString'=>'mysql:host=localhost;port=3306;dbname=yiifcms',
-				'username'=>'root',
-				'password'=>'123456',
+				'connectionString'=>'mysql:host=127.0.0.1;port=3306;dbname=yiifcms',
+				'username'=>'w',
+				'password'=>'123x456',
 				'emulatePrepare'=>true,  // needed by some MySQL installations
 				'charset'=>'utf8',
 				'tablePrefix' => 'yiif_',
