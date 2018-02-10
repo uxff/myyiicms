@@ -3373,10 +3373,10 @@ REPLACE INTO `#@__upload` VALUES('111','1','087.gif','uploads/attached/image/201
 REPLACE INTO `#@__upload` VALUES('112','1','093.gif','uploads/attached/image/201411/cc606713af3.gif','uploads/thumbs/201411/small_cc606713af3.gif','gif','image/gif','1043','0','1416817830');
 
 -- 用户 --
-REPLACE INTO `#@__user` VALUES('2','没那么简单','$2a$08$7XNWXLQfsDE3JNDDb2x/V.JLjeOtfCJIRmt.akQ5aBMf4jwAvFhR.','376685457@qq.com','9','1','1379091600','uploads/avatar/201407/small_2_cc2e86cc790.jpg','','','','','','0.0.0.0','127.0.0.1','7','N');
-REPLACE INTO `#@__user` VALUES('3','testUser','$2a$08$QuvI8Ory.KMdKvmaCV/g9O8AoVTQMMvDrS.wvkOnEWBIBJwm3kLsq','1441044277@qq.com','1','1','1399346040','uploads/avatar/201405/small_31_c696db73478.jpg','nicename','这个家伙很懒，什么都不写','http://www.baidu.com','','','0.0.0.0','127.0.0.1','46','N');
-REPLACE INTO `#@__user` VALUES('4','test123','$2a$08$IrFpdJZKlMTUoiLS/D79kOiFfy9MInvsRQuoNc5hiCSL9qSISQxIm','test123@qq.com','1','1','1399346280','','','','','','','0.0.0.0','','0','N');
-REPLACE INTO `#@__user` VALUES('5','test001','$2a$08$mmxLn6zpboN/Q2BnDfk4MesW4qbcIRD0ONmiuJ/gwv1X1kuinCTge','326196999@qq.com','1','1','1400462626','uploads/avatar/201412/small_33_573d94fddc7.png','','','','','','0.0.0.0','127.0.0.1','11','N');
+REPLACE INTO `#@__user` VALUES('2','没那么简单','$2a$08$7XNWXLQfsDE3JNDDb2x/V.JLjeOtfCJIRmt.akQ5aBMf4jwAvFhR.','376685457@qq.com','9','1','1379091600','uploads/avatar/201407/small_2_cc2e86cc790.jpg','','','','','','0.0.0.0','127.0.0.1','7','N','0');
+REPLACE INTO `#@__user` VALUES('3','testUser','$2a$08$QuvI8Ory.KMdKvmaCV/g9O8AoVTQMMvDrS.wvkOnEWBIBJwm3kLsq','1441044277@qq.com','1','1','1399346040','uploads/avatar/201405/small_31_c696db73478.jpg','nicename','这个家伙很懒，什么都不写','http://www.baidu.com','','','0.0.0.0','127.0.0.1','46','N','0');
+REPLACE INTO `#@__user` VALUES('4','test123','$2a$08$IrFpdJZKlMTUoiLS/D79kOiFfy9MInvsRQuoNc5hiCSL9qSISQxIm','test123@qq.com','1','1','1399346280','','','','','','','0.0.0.0','','0','N','0');
+REPLACE INTO `#@__user` VALUES('5','test001','$2a$08$mmxLn6zpboN/Q2BnDfk4MesW4qbcIRD0ONmiuJ/gwv1X1kuinCTge','326196999@qq.com','1','1','1400462626','uploads/avatar/201412/small_33_573d94fddc7.png','','','','','','0.0.0.0','127.0.0.1','11','N','0');
 
 -- 视频 --
 REPLACE INTO `#@__video` VALUES('1','美国队长','16','uploads/images/201406/827a03cb8cb.jpg','','englise','science','8.6','','','美国队长','0.00','1407120508','1400834656','79','0','{\"t\":10,\"s\":[0,1,1,2,6]}','Y','','','');

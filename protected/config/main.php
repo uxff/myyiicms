@@ -47,7 +47,6 @@ $config = array(
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(			
-			//'enablePrettyUrl' => true,
 			//'urlFormat'=>'path',
 			'showScriptName'=>false,			
 			//'urlSuffix'=>'/',			
@@ -73,8 +72,8 @@ $config = array(
 		
 		'db'=>array(
 				'class'=>'system.db.CDbConnection',				
-				'connectionString'=>'mysql:host=127.0.0.1;port=3306;dbname=yiifcms',
-				'username'=>'w',
+				'connectionString'=>'mysql:host=localhost;port=3306;dbname=yiifcms',
+				'username'=>'www',
 				'password'=>'123x456',
 				'emulatePrepare'=>true,  // needed by some MySQL installations
 				'charset'=>'utf8',
@@ -116,15 +115,6 @@ $config = array(
 				*/
 			),
 		),
-        'curl'=>array(
-            'class'=>'ext.curl.Curl',
-            'options'=>array(
-                CURLOPT_RETURNTRANSFER=>1,
-            ),
-        ),
-        'apitool'=>array(
-            'class'=>'ext.apitool.Apitool',
-        ),
 	),
 
 	// application-level parameters that can be accessed

@@ -3,7 +3,8 @@
 return array (
   'cache' => 
   array (
-    'class' => 'CMemCache',
+    'class' => 'CFileCache',
+    /*
     'servers' => 
     array (
       0 => 
@@ -12,6 +13,7 @@ return array (
         'port' => '11211',
       ),
     ),
+    */
   ),
 );
 
