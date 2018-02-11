@@ -29,7 +29,7 @@
        <tr>
         <th height="30" align="right">数据库名称：</th>
         <td>
-	        <input value="yiifcms" type="text" name="dbName" id="dbName" class="class_input validate[required]" /> 
+	        <input value="yiicms" type="text" name="dbName" id="dbName" class="class_input validate[required]" /> 
 	        <span class="cnote">请输入数据库名，如果不存在将创建</span>
         </td>
       </tr>

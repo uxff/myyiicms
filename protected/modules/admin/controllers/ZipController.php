@@ -31,7 +31,7 @@ class ZipController extends Backend
     		if($files){
 	    		//提交打包
 	    		$zip = new ZipArchive();
-	    		$name = 'yiifcmsBAK_'.date('YmdHis',time()).'.zip';
+	    		$name = 'yiicmsBAK_'.date('YmdHis',time()).'.zip';
 	    		$zipname = WWWPATH.'/'.$name;
 	    		//创建一个空的zip文件
 	    		if($zip->open($zipname,ZipArchive::OVERWRITE)){	    			    			

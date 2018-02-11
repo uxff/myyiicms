@@ -1,3 +1,5 @@
-./assets
-./protected/runtime
+assets/
+protected/runtime/
+protected/config/main.php
+protected/data/install.lock
 

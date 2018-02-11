@@ -1,7 +1,7 @@
 	<div id="intro">		
 		<div class="intro_title">
 			<a href="<?php echo $this->createUrl('soft/index', array('catalog_id'=>11));?>" class="view_more" target="_blank"><?php echo Yii::t('common','DownLoad Now');?></a>
-			<h1>YIIFCMS</h1>
+			<h1>yiicms</h1>
 			<p class="intro_desc"><?php echo $this->_setting['seo_description'];?></p>
 		</div>
 		<!-- 首页头部banner开始 -->
@@ -16,7 +16,7 @@
 			<li>
 				<div class="ico_one"></div>
 				<h2>开源、免费</h2>
-				<p>yiifcms是基于yiiframework开发的内容管理系统，它开源、免费，用户可以自由下载、使用、修改、学习交流。</p>
+				<p>yiicms是基于yiiframework开发的内容管理系统，它开源、免费，用户可以自由下载、使用、修改、学习交流。</p>
 				<a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>" target="_blank"><?php echo Yii::t('common','Read Details')?></a>
 			</li>
 			<li>
@@ -28,13 +28,13 @@
 			<li>
 				<div class="ico_one ico_three"></div>
 				<h2>简洁、方便</h2>
-				<p>yiifcms有简洁、方便的后台管理，用户不需要了解复杂的逻辑关系，就可以很快速的发布内容，优化管理。</p>
+				<p>yiicms有简洁、方便的后台管理，用户不需要了解复杂的逻辑关系，就可以很快速的发布内容，优化管理。</p>
 				<a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>" target="_blank"><?php echo Yii::t('common','Read Details')?></a>
 			</li>
 			<li class="last">
 				<div class="ico_one ico_four"></div>
 				<h2>轻松、稳定</h2>
-				<p>yiifcms架构合理、布局优美，是您轻松建站和学习的不二之选。</p>
+				<p>yiicms架构合理、布局优美，是您轻松建站和学习的不二之选。</p>
 				<a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>" target="_blank"><?php echo Yii::t('common','Read Details')?></a>
 			</li>
 		</ul>
