@@ -67,7 +67,7 @@ class CommentController extends FrontBase
   	}  	
   	if(!$post){
   		throw new CHttpException(404, Yii::t('admin','Submit Error'));
-  		break;
+  		//break;
   	}
   	//评论内容    
   	$model = new Comment('create');
