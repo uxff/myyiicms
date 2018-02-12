@@ -14,20 +14,20 @@
 			</ul>
 		</li>
 		<li class="footer_mid">
-			<h2>快捷通道</h2>
+			<h2>关于我们</h2>
 			<ul>
 				<li><a href="<?php echo $this->createUrl('page/index', array('id'=>'about'));?>" rel="nofollow">关于我们</a></li>
 				<li><a href="<?php echo $this->createUrl('question/index');?>" rel="nofollown">留言反馈</a></li>	
 			</ul>
 		</li>
 		<li class="footer_right">
-			<h2>Power By <strong>惜暮(Sim)</strong></h2>			
+			<h2><strong>友情链接</strong></h2>			
 			<div class="clear">
-				<label><img width="70" src="<?php echo $this->_stylePath;?>/images/my_header.jpg" /></label>
+				<label><img width="70" src="<?php echo $this->_stylePath;?>/images/qrcode-yiiframework.png" /></label>
 				<div class="text">
-					<p><a href="http://weibo.com/u/1503697997" class="sinawb_me" target="_blank">Ps冷眸_涵</a></p>
-					<p><a href="mailto:xb_zjh@126.com" class="email_me">xb_zjh@126.com</a></p>
-					<p><a href="tencent://message/?uin=326196998" class="qq_me">326196998</a></p>
+					<p><a href="www.yiiframework.com">www.yiiframework.com</a></p>
+					<p><a href="www.yiichina.com">www.yiichina.com</a></p>
+					<p><a href="http://www.digpage.com/basic.html">www.digpage.com</a></p>
 				</div>				
 			</div>
 		</li>

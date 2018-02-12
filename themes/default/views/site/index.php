@@ -1,9 +1,12 @@
 	<div id="intro">		
+        <!--
 		<div class="intro_title">
 			<a href="<?php echo $this->createUrl('soft/index', array('catalog_id'=>11));?>" class="view_more" target="_blank"><?php echo Yii::t('common','DownLoad Now');?></a>
 			<h1>yiicms</h1>
 			<p class="intro_desc"><?php echo $this->_setting['seo_description'];?></p>
 		</div>
+        -->
+        <br/>
 		<!-- 首页头部banner开始 -->
 		<?php if($index_top_banner):?>	
 		<a class="banner index_mid_banner" title="<?php echo $index_top_banner->title;?>" href="<?php echo $index_top_banner->link_url;?>" target="_blank">
