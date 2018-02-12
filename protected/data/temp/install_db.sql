@@ -38,12 +38,12 @@ CREATE TABLE `#@__ad_position` (
 DROP TABLE IF EXISTS `#@__attention`;
 CREATE TABLE `#@__attention` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cid` int(10) unsigned DEFAULT '0' COMMENT '收藏id',
-  `user_id` int(10) unsigned DEFAULT '0' COMMENT '用户id',
+  `cid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏id',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
   `title` varchar(100) NOT NULL DEFAULT '' COMMENT '收藏名称',
   `url` varchar(200) NOT NULL DEFAULT '' COMMENT '收藏地址',
-  `type` tinyint(2) unsigned DEFAULT '1' COMMENT '收藏内容类型(文章/图片/商品/视频)',
-  `create_time` int(10) unsigned DEFAULT '0' COMMENT '添加时间',
+  `type` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '收藏内容类型(文章/图片/商品/视频)',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='关注表';
 
@@ -65,7 +65,7 @@ CREATE TABLE `#@__catalog` (
   `status` enum('Y','N') NOT NULL DEFAULT 'Y' COMMENT '是否显示',
   `redirect_url` varchar(255) NOT NULL DEFAULT '' COMMENT '跳转地址',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
-  `update_time` int(10) unsigned DEFAULT '0' COMMENT '修改时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='全局分类';
 INSERT INTO `#@__catalog` VALUES('1','1','0','精品阅读','','','','','','','0','0','Y','','1379545020','1418373077');
@@ -93,12 +93,12 @@ INSERT INTO `#@__catalog` VALUES('21','1','1','web前端','','','','','','','0',
 DROP TABLE IF EXISTS `#@__collect`;
 CREATE TABLE `#@__collect` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cid` int(10) unsigned DEFAULT '0' COMMENT '收藏id',
-  `user_id` int(10) unsigned DEFAULT '0' COMMENT '用户id',
+  `cid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏id',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
   `title` varchar(100) NOT NULL DEFAULT '' COMMENT '收藏名称',
   `url` varchar(200) NOT NULL DEFAULT '' COMMENT '收藏地址',
-  `type` tinyint(2) unsigned DEFAULT '1' COMMENT '收藏内容类型(文章/图片/商品/视频)',
-  `create_time` int(10) unsigned DEFAULT '0' COMMENT '添加时间',
+  `type` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '收藏内容类型(文章/图片/商品/视频)',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='收藏表';
 
@@ -136,13 +136,13 @@ CREATE TABLE `#@__goods` (
   `default_thumb` varchar(200) NOT NULL DEFAULT '' COMMENT '商品缩略图',
   `image_list` varchar(255) NOT NULL DEFAULT '' COMMENT '商品组图',
   `content` text COMMENT '商品内容',
-  `views` int(10) unsigned DEFAULT '0' COMMENT '浏览次数',
-  `sales` int(10) unsigned DEFAULT '0' COMMENT '销售次数',
+  `views` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '浏览次数',
+  `sales` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '销售次数',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` enum('Y','N') NOT NULL DEFAULT 'Y' COMMENT '显示状态',
   `recom_id` int(10) NOT NULL DEFAULT '0' COMMENT '推荐位id',
-  `sort_order` mediumint(10) unsigned DEFAULT '0' COMMENT '排序',
+  `sort_order` mediumint(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='商品表';
 
@@ -206,7 +206,7 @@ CREATE TABLE `#@__mail_log` (
   `sendtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '发送时间',
   `status` enum('waiting','success','failed') NOT NULL DEFAULT 'waiting' COMMENT '当前邮件状态(待发送、发送成功、发送失败)',
   `level` enum('1','2','3') NOT NULL DEFAULT '3' COMMENT '邮件优先级(越小越优先)',
-  `times` tinyint(2) unsigned DEFAULT '0' COMMENT '发送次数',
+  `times` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '发送次数',
   `error` varchar(100) NOT NULL DEFAULT '' COMMENT '错误信息',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COMMENT='发送邮件日志';
@@ -219,8 +219,8 @@ CREATE TABLE `#@__menu` (
   `menu_link` varchar(50) NOT NULL DEFAULT '' COMMENT '导航链接',
   `unique` varchar(20) NOT NULL DEFAULT '' COMMENT '唯一标示',
   `status_is` enum('Y','N') NOT NULL DEFAULT 'Y' COMMENT '是否显示',
-  `parent_id` int(10) unsigned DEFAULT '0' COMMENT '上级菜单',
-  `sort_order` int(10) unsigned DEFAULT '0' COMMENT '排序',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级菜单',
+  `sort_order` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   `target` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '新窗口打开',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='导航菜单表';
@@ -474,7 +474,7 @@ DROP TABLE IF EXISTS `#@__soft`;
 CREATE TABLE `#@__soft` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL DEFAULT '' COMMENT '软件标题',
-  `catalog_id` smallint(5) unsigned DEFAULT '0' COMMENT '分类id ',
+  `catalog_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '分类id ',
   `soft_icon` varchar(100) NOT NULL DEFAULT '' COMMENT '软件图标',
   `cover_image` varchar(100) NOT NULL DEFAULT '' COMMENT '封面图片',
   `fileid` varchar(255) NOT NULL DEFAULT '' COMMENT '文件id',
@@ -489,8 +489,8 @@ CREATE TABLE `#@__soft` (
   `pay` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '支付费用',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最近更新时间',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '发布时间',
-  `view_count` int(10) unsigned DEFAULT '0' COMMENT '浏览次数',
-  `down_count` smallint(8) unsigned DEFAULT '0' COMMENT '下载次数',
+  `view_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '浏览次数',
+  `down_count` smallint(8) unsigned NOT NULL DEFAULT '0' COMMENT '下载次数',
   `status` enum('Y','N') NOT NULL DEFAULT 'Y' COMMENT '是否显示',
   `seo_title` varchar(255) NOT NULL DEFAULT '' COMMENT 'SEO标题',
   `seo_description` text COMMENT 'SEO描述',
@@ -533,7 +533,7 @@ DROP TABLE IF EXISTS `#@__tag_data`;
 CREATE TABLE `#@__tag_data` (
   `tag_id` int(10) unsigned NOT NULL DEFAULT '0',
   `content_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `type` tinyint(3) unsigned DEFAULT '1' COMMENT '栏目类型',
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '栏目类型',
   `status` enum('Y','N') NOT NULL DEFAULT 'Y' COMMENT '是否显示',
   PRIMARY KEY (`tag_id`,`content_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='内容标签关联表';
@@ -561,7 +561,7 @@ CREATE TABLE `#@__user` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `groupid` int(10) unsigned DEFAULT '1' COMMENT '用户组id',
+  `groupid` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '用户组id',
   `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '-1待审核 0 -禁用  1-通过',
   `addtime` int(10) NOT NULL DEFAULT '0' COMMENT '注册时间',
   `avatar` varchar(100) NOT NULL DEFAULT '' COMMENT '头像',
@@ -572,7 +572,7 @@ CREATE TABLE `#@__user` (
   `qq` varchar(11) NOT NULL DEFAULT '' COMMENT 'qq号码',
   `register_ip` varchar(15) NOT NULL DEFAULT '0.0.0.0' COMMENT '注册ip',
   `last_login_ip` varchar(15) NOT NULL DEFAULT '0.0.0.0' COMMENT '上次登录ip',
-  `logins` int(10) unsigned DEFAULT '0' COMMENT '登录次数',
+  `logins` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登录次数',
   `username_editable` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '用户名是否可编辑',
   `last_login_time` int(10) NOT NULL DEFAULT '0' COMMENT '最后登录时间',
   PRIMARY KEY (`uid`),
@@ -603,7 +603,7 @@ DROP TABLE IF EXISTS `#@__video`;
 CREATE TABLE `#@__video` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL DEFAULT '' COMMENT '视频名称',
-  `catalog_id` smallint(5) unsigned DEFAULT '0' COMMENT '分类id ',
+  `catalog_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '分类id ',
   `cover_image` varchar(100) NOT NULL DEFAULT '' COMMENT '封面图片',
   `fileid` varchar(255) NOT NULL DEFAULT '' COMMENT '文件id',
   `language` varchar(10) NOT NULL DEFAULT '' COMMENT '视频语言',
@@ -616,7 +616,7 @@ CREATE TABLE `#@__video` (
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最近更新时间',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '发布时间',
   `view_count` smallint(8) unsigned NOT NULL DEFAULT '0' COMMENT '观看次数',
-  `down_count` smallint(8) unsigned DEFAULT '0' COMMENT '下载次数',
+  `down_count` smallint(8) unsigned NOT NULL DEFAULT '0' COMMENT '下载次数',
   `voted` varchar(100) NOT NULL DEFAULT '' COMMENT '投票结果',
   `status` enum('Y','N') NOT NULL DEFAULT 'Y' COMMENT '是否显示',
   `seo_title` varchar(255) NOT NULL DEFAULT '' COMMENT 'SEO标题',
