@@ -54,9 +54,9 @@ class SiteController extends FrontBase
 		}
 		
 		//最新图集
-		$image_new = Image::model()->getList(array('limit'=>10));
+		$image_new = Image::model()->getList(array('limit'=>20));
 		//热门图集
-		$image_hot = Image::model()->getList(array('limit'=>10, 'order'=>'view_count DESC, t.id DESC'));
+		$image_hot = Image::model()->getList(array('limit'=>20, 'order'=>'view_count DESC, t.id DESC'));
 		
 		//最新软件
 		$soft_new = Soft::model()->getList(array('limit'=>20));		
