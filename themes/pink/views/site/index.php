@@ -1,11 +1,40 @@
-	<div id="intro">		
-        <!--
+	<div id="intro">
+       <!--    
 		<div class="intro_title">
 			<h1><?php echo $this->_setting['site_name'];?></h1>
 			<p class="intro_desc"><?php echo $this->_setting['seo_description'];?></p>
 		</div>
         -->
-        <br/>
+		<div class="intro_title">
+           <p>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">清纯美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">明星写真</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">校园甜美</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">唯美系列</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">动漫图片</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">热辣美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">娱乐八卦</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">搞笑图片</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">乡村爱情</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">都市白领</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">自然归真</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">气质女神</a>
+           </p>
+           <p>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">山东美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">江苏美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">浙江美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">天津美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">福建美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">广东美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">海南美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">上海美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">湖北美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">云南美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">四川美女</a>
+                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">重庆美女</a>
+           </p>
+		</div>
 		<!-- 首页头部banner开始 -->
 		<?php if($index_top_banner):?>	
 		<a class="banner index_mid_banner" title="<?php echo $index_top_banner->title;?>" href="<?php echo $index_top_banner->link_url;?>" target="_blank">
@@ -13,7 +42,7 @@
 		</a>
 		<?php endif;?>
 		<!-- 首页头部banner结束 -->	
-	
+        <!--
 		<ul class="intro_box clear">
 			<li>
 				<div class="ico_one"></div>
@@ -40,16 +69,147 @@
 				<a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>" target="_blank"><?php echo Yii::t('common','Read Details')?></a>
 			</li>
 		</ul>
+        -->
 	</div>
 	
 	<!-- 首页中部banner -->
-	<?php if($index_mid_banner):?>	
+	<?php if( false && $index_mid_banner):?>	
 	<a class="banner index_mid_banner" title="<?php echo $index_mid_banner->title;?>" href="<?php echo $index_mid_banner->link_url;?>" target="_blank">
 		<img alt="<?php echo $index_mid_banner->title;?>" width="<?php echo $index_mid_banner->width; ?>" height="<?php echo $index_mid_banner->height;?>" src="<?php echo $index_mid_banner->image_url?$index_mid_banner->image_url:$index_mid_banner->attach_file;?>" />
 	</a>
 	<?php endif;?>
 	
+	
+	<!-- 推荐图集区开始 -->
+	<div class="tab_container">
+		<ul class="etabs text_align_left">			
+			<li class="tab"><a href="#tab_image1">性感美女</a></li>
+			<li class="tab"><a href="#tab_image2">热辣美女</a></li>
+		</ul>	
+		
+		<div class="panel_container">			
+			<ul id="tab_image1" class="tab_image clear">
+				<?php foreach((array)$image_new as $in):?>				
+				<li>
+					<a href="<?php echo $this->createUrl('image/view', array('id'=>$in->id));?>">	
+						<img width="200" src="<?php echo $in->attach_thumb;?>" alt="<?php echo $in->title;?>" />
+						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($in->title, 20);?></span></em>
+					</a>					
+				</li>
+				<?php endforeach;?>
+			</ul>
+			<ul id="tab_image2" class="tab_image clear">
+				<?php foreach((array)$image_new as $in):?>				
+				<li>
+					<a href="<?php echo $this->createUrl('image/view', array('id'=>$in->id));?>">	
+						<img width="200" src="<?php echo $in->attach_thumb;?>" alt="<?php echo $in->title;?>" />
+						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($in->title, 20);?></span></em>
+					</a>					
+				</li>
+				<?php endforeach;?>				
+			</ul>
+		</div>	
+	</div>
+	<!-- 推荐图集区结束 -->
+	
+	<!-- 推荐图集区开始 -->
+	<div class="tab_container">
+		<ul class="etabs text_align_left">			
+			<li class="tab"><a href="#tab_image1">清纯甜美</a></li>
+			<li class="tab"><a href="#tab_image2">校花女神</a></li>
+		</ul>	
+		
+		<div class="panel_container">			
+			<ul id="tab_image1" class="tab_image clear">
+				<?php foreach((array)$image_hot as $ih):?>
+				<li>
+					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
+						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
+						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
+					</a>
+				</li>
+				<?php endforeach;?>
+			</ul>
+			<ul id="tab_image2" class="tab_image clear">
+				<?php foreach((array)$image_hot as $ih):?>
+				<li>
+					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
+						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
+						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
+					</a>					
+				</li>
+				<?php endforeach;?>			
+			</ul>
+		</div>	
+	</div>
+	<!-- 推荐图集区结束 -->
+	
+	<!-- 推荐图集区开始 -->
+	<div class="tab_container">
+		<ul class="etabs text_align_left">			
+			<li class="tab"><a href="#tab_image1">明星写真</a></li>
+			<li class="tab"><a href="#tab_image2">时尚伊人</a></li>
+		</ul>	
+		
+		<div class="panel_container">			
+			<ul id="tab_image1" class="tab_image clear">
+				<?php foreach((array)$image_hot as $ih):?>				
+				<li>
+					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
+						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
+						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
+					</a>					
+				</li>
+				<?php endforeach;?>			
+			</ul>
+			<ul id="tab_image2" class="tab_image clear">
+				<?php foreach((array)$image_hot as $ih):?>				
+				<li>
+					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
+						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
+						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
+					</a>					
+				</li>
+				<?php endforeach;?>			
+			</ul>
+		</div>	
+	</div>
+	<!-- 推荐图集区结束 -->
+	
+	<!-- 推荐图集区开始 -->
+	<div class="tab_container">
+		<ul class="etabs text_align_left">			
+			<li class="tab"><a href="#tab_image1">动漫图片</a></li>
+			<li class="tab"><a href="#tab_image2">唯美系列</a></li>
+		</ul>	
+		
+		<div class="panel_container">			
+			<ul id="tab_image1" class="tab_image clear">
+				<?php foreach((array)$image_hot as $ih):?>				
+				<li>
+					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
+						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
+						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
+					</a>					
+				</li>
+				<?php endforeach;?>			
+			</ul>
+			<ul id="tab_image2" class="tab_image clear">
+				<?php foreach((array)$image_hot as $ih):?>				
+				<li>
+					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
+						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
+						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
+					</a>					
+				</li>
+				<?php endforeach;?>			
+			</ul>
+		</div>	
+	</div>
+	<!-- 推荐图集区结束 -->
+	
 	<!-- 推荐阅读区开始 -->
+    <!--
 	<div class="tab_container">
 		<ul class="etabs text_align_left">
 			<li class="tab"><a href="#tab_post1">最新阅读</a></li>
@@ -70,50 +230,8 @@
 			</ul>			
 		</div>			
 	</div>
+    -->
 	<!-- 推荐阅读区结束 -->
-	
-	<!-- 推荐图集区开始 -->
-	<div class="tab_container">
-		<ul class="etabs text_align_right">			
-			<li class="tab"><a href="#tab_image1">最新图集</a></li>
-			<li class="tab"><a href="#tab_image2">热门图集</a></li>	
-			<li class="tab"><a href="#tab_image3">第三图集</a></li>	
-		</ul>	
-		
-		<div class="panel_container">			
-			<ul id="tab_image1" class="tab_image clear">
-				<?php foreach((array)$image_new as $in):?>				
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$in->id));?>">	
-						<img width="200" src="<?php echo $in->attach_thumb;?>" alt="<?php echo $in->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($in->title, 20);?></span></em>
-					</a>					
-				</li>
-				<?php endforeach;?>				
-			</ul>
-			<ul id="tab_image2" class="tab_image clear">
-				<?php foreach((array)$image_hot as $ih):?>				
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
-					</a>					
-				</li>
-				<?php endforeach;?>			
-			</ul>
-			<ul id="tab_image3" class="tab_image clear">
-				<?php foreach((array)$image_hot as $ih):?>				
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
-					</a>					
-				</li>
-				<?php endforeach;?>			
-			</ul>
-		</div>	
-	</div>
-	<!-- 推荐图集区结束 -->
 	
 	<!-- 推荐下载区开始 -->
 	<div class="tab_container">
