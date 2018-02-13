@@ -60,7 +60,13 @@ class ImageController extends Backend
         $pages->params = is_array( $pageParams ) ? $pageParams : array ();
         $criteria->limit = $pages->pageSize;
         $criteria->offset = $pages->currentPage * $pages->pageSize;
-        $result = $model->findAll( $criteria );    
+        $result = $model->findAll( $criteria );  
+
+        //foreach ($result as &$oneModel) {
+        //    $oneModel->image_list = json_encode(unserialize($oneModel->image_list));
+        //    $oneModel->save();
+        //}
+        //print_r($result);exit;
         //推荐位
         $recom_list = RecommendPosition::model()->findAll('type=:type', array(':type'=>$this->_type));
         $this->render( 'index', array ( 'datalist' => $result , 'pagebar' => $pages ,'recom_list'=>$recom_list) );
@@ -88,7 +94,7 @@ class ImageController extends Backend
     			unset($title_style['color']);
     		}
     		if($title_style){    			
-    			$model->title_style = serialize($title_style);
+    			$model->title_style = json_encode($title_style);
     		}else{
     			$model->title_style = '';
     		}    		
@@ -194,7 +200,7 @@ class ImageController extends Backend
     			unset($title_style['color']);
     		}
     		if($title_style){    			
-    			$model->title_style = serialize($title_style);
+    			$model->title_style = json_encode($title_style);
     		}else{
     			$model->title_style = '';
     		}    		
@@ -262,8 +268,8 @@ class ImageController extends Backend
     			$this->message('success',Yii::t('admin','Update Success'),$this->createUrl('index'));
     		}    		
     	}else{
-    		$imageList = unserialize($model->image_list);
-    		$style = unserialize($model->title_style);
+    		$imageList = json_decode($model->image_list, true);
+    		$style = json_decode($model->title_style, true);
     	}   	
     	    	
     	$this->render('update',array(
@@ -298,7 +304,7 @@ class ImageController extends Backend
         		$postModel = Image::model()->findByPk($id);
         		if($postModel){
         			$image_list = $postModel->image_list;
-        			$image_list && $image_list = unserialize($image_list);
+        			$image_list && $image_list = json_decode($image_list, true);
         			if($image_list){
         				foreach($image_list as $image){
         					Uploader::deleteFile($image['file']);

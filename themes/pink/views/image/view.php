@@ -21,7 +21,6 @@
 					</p>
 					<div class="content_info">
 						<?php if($post->image_list):?>
-						<?php $pics = unserialize($post->image_list);?>												
 						<div id="show_pics">
 							<a href="javascript:;" title="上一个" id="move_prev" class="prev_btn"></a>
 							<ul class="clear">								
@@ -107,7 +106,6 @@
 		var imagemaxwidth = '500';//控制图片初始宽度
 		var aimgcount = new Array();
 		var pics = new Array();		
-		<?php $pics = unserialize($post->image_list);?>
 		var count = <?php echo count($pics);?>
 		<?php foreach((array) $pics as $pic):?>	
 		pics.push('<?php echo $pic['fileId'];?>');

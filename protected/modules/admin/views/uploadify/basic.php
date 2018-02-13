@@ -10,6 +10,7 @@
 		
 $(function() {
     setTimeout(function(){
+        console.log('uploadify will init:'+'<?php echo $this->_static_public?>');
         $('#uploadify').uploadify({
             'buttonText': '选择文件..',
             'fileObjName': 'imgFile',

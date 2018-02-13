@@ -143,7 +143,7 @@ class Controller extends CController
 			}
 	
 		}
-		return array( 'data'=>$var, 'dataSerialize'=>empty( $var )? '': serialize( $var ) );
+		return array( 'data'=>$var, 'dataSerialize'=>empty( $var )? '': json_encode( $var ) );
 	
 	}
 	/**
@@ -152,7 +152,7 @@ class Controller extends CController
 	 * @return string
 	 */
 	public function formatStyle($str = ''){
-		$arr_style =  unserialize($str);
+		$arr_style =  json_decode($str, true);
 		$style = '';
 		if($arr_style){
 			$arr_style['bold'] == 'Y' && $style .= "font-weight:bold;";

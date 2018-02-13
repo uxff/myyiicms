@@ -99,7 +99,8 @@ class ImageController extends FrontBase
     $tplVar = array(
         'post'=>$post,     
         'navs'=>$navs,
-    	'last_images'=>$last_images
+    	'last_images'=>$last_images,
+        'pics' => json_decode($post->image_list, true),
     );
   	$this->render( 'view', $tplVar);
   }
