@@ -42,7 +42,7 @@
 		</a>
 		<?php endif;?>
 		<!-- 首页头部banner结束 -->	
-        <!--
+       <!--
 		<ul class="intro_box clear">
 			<li>
 				<div class="ico_one"></div>

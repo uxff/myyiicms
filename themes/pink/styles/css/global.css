@@ -138,9 +138,9 @@ box-shadow: 0 5px 0 #e2534b;
 
 #page { padding:20px 0; margin-top:20px; }
 #page li { float:left; padding:0 5px; text-align:center; }
-#page li a { display:block; border-radius:5px; width:40px; height:32px; line-height:32px; background-color:#8c9898; font-weight:bold; color:#FFFFFF; text-decoration:none; }
-#page li.selected a{ background-color:#428BCA; }
-#page li a:hover { background-color:#428BCA; }
+#page li a { display:block; border-radius:5px; width:40px; height:32px; line-height:32px; background-color:#cebae2; font-weight:bold; color:#FFFFFF; text-decoration:none; }
+#page li.selected a{ background-color:#ca6dcb; }
+#page li a:hover { background-color:#cb6eca; }
 #page li.first a, #page li.last a{ width:auto; padding:0 5px;}
 #page li.prev_page { padding-left:0; padding-right:10px;}
 #page li.next_page { padding-left:10px; padding-right:0; }

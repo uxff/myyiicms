@@ -22,7 +22,7 @@ class ImageController extends FrontBase
 	}	
 	
 	  /**
-	   * 首页
+	   * 首页 图集列表
 	   */
 	  public function actionIndex() {  	
 	    $catalog_id = trim( $this->_request->getParam( 'catalog_id' ) );
@@ -67,7 +67,7 @@ class ImageController extends FrontBase
 	  }
   
   /**
-   * 浏览详细内容
+   * 浏览一个图集
    */
   public function actionView( $id ) {  	
   	$post = Image::model()->findByPk( intval( $id ) );
@@ -79,7 +79,7 @@ class ImageController extends FrontBase
     $this->_seoTitle = empty( $post->seo_title ) ? $post->title  .' - '. $this->_setting['site_name'] : $post->seo_title;
     $this->_seoKeywords = empty( $post->seo_keywords ) ? $post->tags  : $post->seo_keywords;
     $this->_seoDescription = empty( $post->seo_description ) ? $this->_seoDescription: $post->seo_description;
-    $catalogArr = Catalog::model()->findByPk($post->catalog_id);
+    //$catalogArr = Catalog::model()->findByPk($post->catalog_id);
     
   	//加载css,js	
     Yii::app()->clientScript->registerCssFile($this->_stylePath . "/css/view.css");   
@@ -95,7 +95,18 @@ class ImageController extends FrontBase
 	
 	//nav
 	$navs = array();
-	$navs[] = array('url'=>$this->createUrl('image/view',array('id'=>$id)), 'name'=>$post->title);
+
+      //获取上级栏目
+      $catalogs = Catalog::model()->getParents($post->catalog_id);
+
+      if($catalogs){
+          foreach ($catalogs as $catalog) {
+              array_unshift($navs, array('url'=>$this->createUrl('image/index', array('catalog_id'=>$catalog->id)),'name'=>$catalog->catalog_name));
+          }
+      }
+
+
+      $navs[] = array('url'=>$this->createUrl('image/view',array('id'=>$id)), 'name'=>$post->title);
     $tplVar = array(
         'post'=>$post,     
         'navs'=>$navs,
@@ -106,19 +117,28 @@ class ImageController extends FrontBase
   }
   
   /**
-   * 浏览详细内容
+   * 浏览一个图集下的一张图片
+   * @param int $page 下标从1起步
    */
-  public function actionViewPage( $listid, $pid ) {  	
-  	$post = Image::model()->findByPk( intval( $listid ) );
+  public function actionPage( $id, $page = 1 ) {  	
+  	$post = Image::model()->findByPk( intval( $id ) );
     if ( false == $post || $post->status == 'N')
         throw new CHttpException( 404, Yii::t('common','The requested page does not exist.') );
+
+
     //更新浏览次数
-    $post->updateCounters(array ('view_count' => 1 ), 'id=:id', array ('id' => $listid ));
+    $post->updateCounters(array ('view_count' => 1 ), 'id=:id', array ('id' => $id ));
+
+    $post->image_list = json_decode($post->image_list, true);
+    if (!isset($post->image_list[intval($page-1)])) {
+        throw new CHttpException(404, Yii::t('common', 'The image page does not exist.'));
+    }
+
     //seo信息
     $this->_seoTitle = empty( $post->seo_title ) ? $post->title  .' - '. $this->_setting['site_name'] : $post->seo_title;
     $this->_seoKeywords = empty( $post->seo_keywords ) ? $post->tags  : $post->seo_keywords;
     $this->_seoDescription = empty( $post->seo_description ) ? $this->_seoDescription: $post->seo_description;
-    $catalogArr = Catalog::model()->findByPk($post->catalog_id);
+    //$catalogArr = Catalog::model()->findByPk($post->catalog_id);
     
   	//加载css,js	
     Yii::app()->clientScript->registerCssFile($this->_stylePath . "/css/view.css");   
@@ -131,17 +151,34 @@ class ImageController extends FrontBase
 
 	//最近的图集
 	$last_images = Image::model()->findAll(array('condition'=>'catalog_id = '.$post->catalog_id,'order'=>'id DESC','limit'=>10,));
+    
+    $pageBar = new CPagination( count($post->image_list) );
+    $pageBar->pageSize = 1;
+    $pageBar->currentPage = intval($page-1);
 	
 	//nav
 	$navs = array();
-	$navs[] = array('url'=>$this->createUrl('image/view',array('id'=>$listid)), 'name'=>$post->title);
+
+    //获取上级栏目
+    $catalogs = Catalog::model()->getParents($post->catalog_id);
+
+    if($catalogs){
+        foreach ($catalogs as $catalog) {
+            array_unshift($navs, array('url'=>$this->createUrl('image/index', array('catalog_id'=>$catalog->id)),'name'=>$catalog->catalog_name));
+        }
+    }
+
+	$navs[] = array('url'=>$this->createUrl('image/view',array('id'=>$id)), 'name'=>$post->title);
     $tplVar = array(
         'post'=>$post,     
         'navs'=>$navs,
     	'last_images'=>$last_images,
-        'pics' => json_decode($post->image_list, true),
+        'pics' => $post->image_list,
+        'pic' => $post->image_list[$page-1],
+        'page_no' => $page,
+        'pagebar' => $pageBar,
     );
-  	$this->render( 'view', $tplVar);
+  	$this->render( 'page', $tplVar);
   }
   
 }

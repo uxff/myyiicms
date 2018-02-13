@@ -204,8 +204,8 @@ return array (
 	'You`are Friend' => '你们已经是好友了',
 	
 	//分页
-	'First Page' => '首页',
-	'Last Page' => '末页',
+	'First Page' => '第一页',
+	'Last Page' => '最后一页',
 	'Tags' => '热门标签',
 	'Catagorys' => '分类',
 	'Last Articles'=>'最近的文章',

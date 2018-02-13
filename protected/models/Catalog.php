@@ -237,7 +237,31 @@ class Catalog extends CActiveRecord
 			}
 		}
 		return $newarray;
-	}	
-	
-	
+	}
+
+    /**
+     * 获取某个栏目的上级，直到0 返回包括本身 返回依次从上级到上上级，由近到远
+     * @param number $id
+     * todo:: 需要加缓存
+     */
+    public static function getParents($id){
+        $data = array();
+        $lastId = $id;
+        do {
+            $catalog = self::model()->findByPk($lastId);
+            if (empty($catalog)) {
+                break;
+            }
+            $data []= $catalog;
+            if ($catalog->parent_id == 0) {
+                break;
+            }
+
+            $lastId = $catalog->parent_id;
+
+        } while (true);
+
+        return $data;
+    }
+
 }
