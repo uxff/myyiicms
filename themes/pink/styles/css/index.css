@@ -17,7 +17,7 @@
 /*#intro { padding-bottom:25px;}*/
 #intro h1 { font-size:30px; color:#7f8c8c; }
 #intro .intro_title { padding:24px 35px 24px 27px; text-align:left;}
-#intro .intro_title a {text-decoration: none; font-size: 16px; line-height: 32px; margin-left: 12px; margin-right: 12px; color: #f16d7e;}
+#intro .intro_title a {text-decoration: none; font-size: 17px; line-height: 32px; margin-left: 10px; margin-right: 10px; color: #c557c0; font-family: Arial, 微软雅黑, "Microsoft YaHei";}
 #intro .intro_title a:hover {background-color: #f7c2ee;}
 #intro .intro_desc { font-size:16px; font-weight:bold; padding-top:20px;}
 #intro .view_more { 

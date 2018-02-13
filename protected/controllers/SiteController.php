@@ -54,9 +54,9 @@ class SiteController extends FrontBase
 		}
 		
 		//最新图集
-		$image_new = Image::model()->getList(array('limit'=>20));
+		$image_new = Image::model()->getList(array('limit'=>10));
 		//热门图集
-		$image_hot = Image::model()->getList(array('limit'=>20, 'order'=>'view_count DESC, t.id DESC'));
+		$image_hot = Image::model()->getList(array('limit'=>10, 'order'=>'view_count DESC, t.id DESC'));
 		
 		//最新软件
 		$soft_new = Soft::model()->getList(array('limit'=>20));		
@@ -133,6 +133,7 @@ class SiteController extends FrontBase
 	 * 获取最新cms版本信息
 	 * 
 	 */
+    /*
 	public function actionVersion(){
 		$cms = $this->_request->getParam('cms');
 		$cms = unserialize(base64_decode($cms));
@@ -151,5 +152,6 @@ EOT;
 		}
 		echo $html;
 	}
+    */
 	
 }

@@ -105,5 +105,44 @@ class ImageController extends FrontBase
   	$this->render( 'view', $tplVar);
   }
   
+  /**
+   * 浏览详细内容
+   */
+  public function actionViewPage( $listid, $pid ) {  	
+  	$post = Image::model()->findByPk( intval( $listid ) );
+    if ( false == $post || $post->status == 'N')
+        throw new CHttpException( 404, Yii::t('common','The requested page does not exist.') );
+    //更新浏览次数
+    $post->updateCounters(array ('view_count' => 1 ), 'id=:id', array ('id' => $listid ));
+    //seo信息
+    $this->_seoTitle = empty( $post->seo_title ) ? $post->title  .' - '. $this->_setting['site_name'] : $post->seo_title;
+    $this->_seoKeywords = empty( $post->seo_keywords ) ? $post->tags  : $post->seo_keywords;
+    $this->_seoDescription = empty( $post->seo_description ) ? $this->_seoDescription: $post->seo_description;
+    $catalogArr = Catalog::model()->findByPk($post->catalog_id);
+    
+  	//加载css,js	
+    Yii::app()->clientScript->registerCssFile($this->_stylePath . "/css/view.css");   
+    Yii::app()->clientScript->registerCssFile($this->_static_public . "/js/kindeditor/code/prettify.css");
+    Yii::app()->clientScript->registerCssFile($this->_static_public . "/js/discuz/zoom.css");
+	Yii::app()->clientScript->registerScriptFile($this->_static_public . "/js/jquery/jquery.js");
+	Yii::app()->clientScript->registerScriptFile($this->_static_public . "/js/discuz/common.js");	
+	Yii::app()->clientScript->registerScriptFile($this->_static_public . "/js/discuz/zoom.js");
+	Yii::app()->clientScript->registerScriptFile($this->_static_public . "/js/kindeditor/code/prettify.js",CClientScript::POS_END);
+
+	//最近的图集
+	$last_images = Image::model()->findAll(array('condition'=>'catalog_id = '.$post->catalog_id,'order'=>'id DESC','limit'=>10,));
+	
+	//nav
+	$navs = array();
+	$navs[] = array('url'=>$this->createUrl('image/view',array('id'=>$listid)), 'name'=>$post->title);
+    $tplVar = array(
+        'post'=>$post,     
+        'navs'=>$navs,
+    	'last_images'=>$last_images,
+        'pics' => json_decode($post->image_list, true),
+    );
+  	$this->render( 'view', $tplVar);
+  }
+  
 }
  
