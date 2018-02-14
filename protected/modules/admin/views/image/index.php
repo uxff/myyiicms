@@ -31,12 +31,13 @@ $(document).ready(function(){
     <thead>
       <tr class="tb_header">
         <th width="10%">ID</th>
+        <th width="5%"><?php echo Yii::t('admin','Cover Image');?></th>
         <th><?php echo Yii::t('admin','Title');?></th>
         <th width="12%"><?php echo Yii::t('admin','Categorys');?></th>
         <th width="8%"><?php echo Yii::t('admin','Status');?></th>
         <th width="8%"><?php echo Yii::t('admin','Recommend');?></th>
         <th width="8%"><?php echo Yii::t('admin','Views');?></th>
-        <th width="15%"><?php echo Yii::t('admin','Add Time');?></th>
+        <th width="10%"><?php echo Yii::t('admin','Add Time');?></th>
         <th><?php echo Yii::t('admin','Operate');?></th>
       </tr>
     </thead>
@@ -44,6 +45,7 @@ $(document).ready(function(){
     <tr class="tb_list" <?php if($row->status=='N'):?>style=" background:#F0F7FC"<?php endif?>>
       <td ><input type="checkbox" name="id[]" value="<?php echo $row->id?>">
         <?php echo $row->id?></td>
+      <td ><img src="<?=$row->attach_thumb?>" style="width:auto;height:auto;max-height:60px;"></td>
       <td ><a href="<?php echo $this->createUrl('/image/view', array('id'=>$row['id'])); ?>" title="<?php echo $row->title; ?>" target="_blank" style="<?php echo $this->formatStyle($row->title_style);?>"><?php echo Helper::truncate_utf8_string($row->title, 20);?></a><br />
         </td>
       <td ><?php echo $row->catalog->catalog_name?></td>

@@ -254,4 +254,28 @@ class Image extends CActiveRecord
 		$data = self::model()->findAll($criteria);
 		return $data;
 	}
+    
+    
+	/**
+	 * 处理image_list
+	 * 
+	 * @see CActiveRecord::beforeSave()
+	 */
+	public function beforeSave(){
+		if(is_array($this->image_list)){
+			$this->image_list = json_encode($this->image_list);
+		}
+		return true;
+	}
+	/**
+	 * 处理image_list
+	 * 
+	 * @see CActiveRecord::afterFind()
+	 */
+	public function afterFind(){
+		if(is_string($this->image_list)){
+			$this->image_list = json_decode($this->image_list, true);
+		}
+		return true;
+	}
 }

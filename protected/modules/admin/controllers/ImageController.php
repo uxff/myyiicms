@@ -268,7 +268,7 @@ class ImageController extends Backend
     			$this->message('success',Yii::t('admin','Update Success'),$this->createUrl('index'));
     		}    		
     	}else{
-    		$imageList = json_decode($model->image_list, true);
+    		$imageList = $model->image_list;
     		$style = json_decode($model->title_style, true);
     	}   	
     	    	
@@ -304,7 +304,7 @@ class ImageController extends Backend
         		$postModel = Image::model()->findByPk($id);
         		if($postModel){
         			$image_list = $postModel->image_list;
-        			$image_list && $image_list = json_decode($image_list, true);
+        			//$image_list && $image_list = json_decode($image_list, true);
         			if($image_list){
         				foreach($image_list as $image){
         					Uploader::deleteFile($image['file']);

@@ -55,7 +55,7 @@
 		function winresize()
 		{
 		function $(s){return document.getElementById(s);}
-		var D=document.documentElement||document.body,h=D.clientHeight-90,w=D.clientWidth-160;
+		var D=document.documentElement||document.body,h=D.clientHeight-90,w=D.clientWidth-170;
 		 $("main").style.height=h+"px";
 		 $("mainB").style.width=w+"px";
 		}

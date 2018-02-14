@@ -21,7 +21,7 @@
 .content_list .list_body .view_info .tags em a { padding:3px 4px; background-color:#7f8c8c; border-radius:5px; color:#FFFFFF; text-decoration:none; }
 .content_list .list_body .view_info .tags em a:hover { background-color:#e2534b; }
 .content_list .list_body .view_info .times:before { content:"\f017"; }
-.content_list .list_body .view_info .views:before { content:"\f086"; }
+.content_list .list_body .view_info .views { padding-left:23px; background:url(../images/ico_view.png) no-repeat left center; } /*:before{ content:"\f086";} */
 .content_list .list_body .view_info .downs:before { content:"\f019";}
 .content_list .list_body .content_info { margin-bottom:10px; }
 .content_list .list_body .content_info .content_cover { float:left; border:1px solid #DDDDDD; margin-right:20px;}

@@ -111,7 +111,7 @@ class ImageController extends FrontBase
         'post'=>$post,     
         'navs'=>$navs,
     	'last_images'=>$last_images,
-        'pics' => json_decode($post->image_list, true),
+        'pics' => $post->image_list,
     );
   	$this->render( 'view', $tplVar);
   }
@@ -129,7 +129,7 @@ class ImageController extends FrontBase
     //更新浏览次数
     $post->updateCounters(array ('view_count' => 1 ), 'id=:id', array ('id' => $id ));
 
-    $post->image_list = json_decode($post->image_list, true);
+    //$post->image_list = json_decode($post->image_list, true);
     if (!isset($post->image_list[intval($page-1)])) {
         throw new CHttpException(404, Yii::t('common', 'The image page does not exist.'));
     }
