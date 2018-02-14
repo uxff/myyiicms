@@ -43,7 +43,7 @@ class UploadifyController extends Backend
             	exit( CJSON::encode( array ( 'state' => 'error' , 'message' => Yii::t('admin','Please select a file.') ) ) );
             }    
             foreach($files as $simplefile){
-            	$file->uploadFile($simplefile,true);
+            	$file->uploadFile($simplefile,$doThumb = false);
             	if($file->_error){
             		exit( CJSON::encode( array ( 'error' => 1 , 'message' => Yii::t('admin',$file->_error) ) ) );
             	}else{

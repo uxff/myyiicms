@@ -34,6 +34,7 @@ $(document).ready(function(){
         <th width="5%"><?php echo Yii::t('admin','Cover Image');?></th>
         <th><?php echo Yii::t('admin','Title');?></th>
         <th width="12%"><?php echo Yii::t('admin','Categorys');?></th>
+        <th width="8%"><?php echo Yii::t('admin','Page Count');?></th>
         <th width="8%"><?php echo Yii::t('admin','Status');?></th>
         <th width="8%"><?php echo Yii::t('admin','Recommend');?></th>
         <th width="8%"><?php echo Yii::t('admin','Views');?></th>
@@ -49,6 +50,7 @@ $(document).ready(function(){
       <td ><a href="<?php echo $this->createUrl('/image/view', array('id'=>$row['id'])); ?>" title="<?php echo $row->title; ?>" target="_blank" style="<?php echo $this->formatStyle($row->title_style);?>"><?php echo Helper::truncate_utf8_string($row->title, 20);?></a><br />
         </td>
       <td ><?php echo $row->catalog->catalog_name?></td>
+      <td ><?=count($row->image_list)?></td>
       <td><?php if($row->status == 'Y'){echo Yii::t('admin','Show');}else{echo "<span class='red'>".Yii::t('admin','Hidden')."</span>";}?></td>
       <td><?php if($row->commend == 'Y'){echo Yii::t('admin','Yes');}else{echo Yii::t('admin','No');}?></td>
       <td><span ><?php echo $row->view_count?></span></td>

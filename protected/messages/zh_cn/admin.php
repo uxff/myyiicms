@@ -267,6 +267,7 @@ return array (
 	'Attention Count' => '关注人数',
 	'View Count' => '查看次数',
 	'Reply Count' => '回复次数',
+	'Page Count' => '页数',
 	'Color' => '颜色',
 	'Special Name' => '专题名称',
 	'Default Empty' => '默认为空',
