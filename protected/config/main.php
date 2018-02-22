@@ -72,22 +72,22 @@ $config = array(
 		
 		'db'=>array(
 				'class'=>'system.db.CDbConnection',				
-				'connectionString'=>'mysql:host=127.0.0.1;port=3306;dbname=yiifcms',
+				'connectionString'=>'mysql:host=127.0.0.1;port=3306;dbname=yiicms',
 				'username'=>'www',
 				'password'=>'123x456',
 				'emulatePrepare'=>true,  // needed by some MySQL installations
 				'charset'=>'utf8',
-				'tablePrefix' => 'yiif_',
+				'tablePrefix' => 'yii_',
 		),
 		
 		//Configure SESSION 
 		'session'=>array(
 				'class'=>'CDbHttpSession',
 				'connectionID' => 'db',
-				'sessionTableName' => 'yiif_session',
+				'sessionTableName' => 'yii_session',
 				'timeout'=>3600,    //default 1440 seconds
 				'autoStart'=>true,								
-				'sessionName'=>'YFCMSSN',	
+				'sessionName'=>'YIIS',	
 		),
 		
 		//Configure Authorization Manager

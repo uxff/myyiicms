@@ -3,7 +3,7 @@
 * 
 * author: xdr
 * date:   2016-01-26
-* cmd:    php index.php picset index --param=val
+* cmd:    php protected/commands/index.php picset --deep=1 --dir=/data/wwwroot/myyiicms/uploads/NTUxNTY/cXHNt8_x --webroot=/data/wwwroot/myyiicms --cata=1
 */
 class PicsetCommand  extends CConsoleCommand 
 {

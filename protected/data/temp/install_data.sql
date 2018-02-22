@@ -9,31 +9,31 @@
 INSERT INTO `#@__catalog` VALUES('1','1','0','资讯','','','','','','','0','0','Y','','1379545020','1418373077');
 INSERT INTO `#@__catalog` VALUES('2','1','1','社会新闻','','','','','','','2','0','Y','','1379545199','1404109846');
 INSERT INTO `#@__catalog` VALUES('3','1','1','科技新闻','','','','','','','1','0','Y','','1379545248','1407122169');
-INSERT INTO `#@__catalog` VALUES('4','5','0','美女','','','','','','','0','0','N','','1379545330','1394517482');
-INSERT INTO `#@__catalog` VALUES('5','5','4','美女写真','','','','','','','1','0','N','','1379545388','1394517482');
-INSERT INTO `#@__catalog` VALUES('6','5','4','明星图片','','','','','','','0','0','N','','1379545435','1394517482');
-INSERT INTO `#@__catalog` VALUES('8','2','0','动漫','','','','','','','0','0','Y','','0','1399616730');
-INSERT INTO `#@__catalog` VALUES('9','2','8','动漫图片','','','','','','','0','0','Y','','0','1399616723');
-INSERT INTO `#@__catalog` VALUES('10','3','0','风景','','','','','','','0','0','Y','','1400489000','1407117706');
-INSERT INTO `#@__catalog` VALUES('11','3','0','搞笑','','','','','','','0','0','Y','','1400489000','1407117706');
-INSERT INTO `#@__catalog` VALUES('12','4','0','创意','','','','','','','0','0','Y','','1400828336','1407120434');
+INSERT INTO `#@__catalog` VALUES('4','1','0','美女','','','','','','','0','0','Y','','1379545330','1394517482');
+INSERT INTO `#@__catalog` VALUES('5','1','4','美女写真','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('6','1','4','明星图片','','','','','','','0','0','Y','','1379545435','1394517482');
+INSERT INTO `#@__catalog` VALUES('8','1','0','动漫','','','','','','','0','0','Y','','0','1399616730');
+INSERT INTO `#@__catalog` VALUES('9','1','8','动漫图片','','','','','','','0','0','Y','','0','1399616723');
+INSERT INTO `#@__catalog` VALUES('10','1','0','风景','','','','','','','0','0','Y','','1400489000','1407117706');
+INSERT INTO `#@__catalog` VALUES('11','1','0','搞笑','','','','','','','0','0','Y','','1400489000','1407117706');
+INSERT INTO `#@__catalog` VALUES('12','1','0','创意','','','','','','','0','0','Y','','1400828336','1407120434');
 
 -- 导航 --
 INSERT INTO `#@__menu` VALUES('1','首页','index.php','index','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('2','资讯新闻','?r=post/index','post','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('2','资讯新闻','?r=post/index','post','N','0','0','N');
 INSERT INTO `#@__menu` VALUES('3','美女写真','?r=image/index','image','Y','0','0','N');
 INSERT INTO `#@__menu` VALUES('4','动漫图片','?r=soft/index','soft','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('5','风景壁纸','?r=video/index','video','N','0','0','N');
+INSERT INTO `#@__menu` VALUES('5','风景壁纸','?r=video/index','video','Y','0','0','N');
 INSERT INTO `#@__menu` VALUES('6','搞笑内涵','?r=page/guide','guide','Y','0','6','N');
-INSERT INTO `#@__menu` VALUES('7','创意奇趣','?r=question/index','question','N','0','0','N');
-INSERT INTO `#@__menu` VALUES('8','讨论区','http://bbs.yiifcms.com/','bbs','Y','0','0','Y');
+INSERT INTO `#@__menu` VALUES('7','创意奇趣','?r=question/index','question','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('8','讨论区','http://bbs.yiifcms.com/','bbs','N','0','0','Y');
 
 -- 内容模型 --
-INSERT INTO `#@__model_type` VALUES('1','post','文章','Post','Y','最新最优秀的IT文章IT资讯','IT，程序员，工程师，文章，博文，资讯，最新，优秀，php，mysql，html，yii，framework，js，jquery，web，mvc，开发','聚合了优质的IT文章，无论你是前端工程师，还是后端程序员，都可以找到你想了解的知识和资讯，更多内容尽在yiifcms。');
-INSERT INTO `#@__model_type` VALUES('2','image','图集','Image','Y','最新最全的热门图集、精品爆图、美图','图片，图集，最新，热门，精品，最全，美女，爆料，搞笑','展示了用户最喜爱的美女图片、爆料图片、搞笑图片，惊爆眼球，更多内容尽在yiifcms。');
-INSERT INTO `#@__model_type` VALUES('3','soft','软件','Soft','Y','最新发布的yiifcms、热门手册、精品下载、建站工具','yii，cms，版本，下载，最新，热门，最全，精品，建站，工具，安全，稳定','提供了web开发人员的建站工具和yiifcms发布版本，供感兴趣的用户下载和使用，详情了解尽在yiifcms。');
-INSERT INTO `#@__model_type` VALUES('4','video','视频','Video','Y','最新上映的电影、热门视频、热播电视剧、下载视频','视频，电影，微电影，电视剧，MV，MTV，最新，热门，热播，高清，下载','聚合了用户最喜爱的视频，尽在yiifcms。');
-INSERT INTO `#@__model_type` VALUES('5','goods','商品','Goods','Y','ds','dd','d');
+INSERT INTO `#@__model_type` VALUES('1','post','文章','Post','Y','最新权威的网络资讯，科技动态，社会新闻','互联网，IT，文章，博文，资讯，最新，优秀','');
+INSERT INTO `#@__model_type` VALUES('2','image','图集','Image','Y','最新最全的热门图集、爆图、美图','图片，图集，最新，热门，精品，最全，美女，爆料，搞笑','展示了用户最喜爱的美女图片、爆料图片、搞笑图片，惊爆眼球。');
+INSERT INTO `#@__model_type` VALUES('3','soft','软件','Soft','Y','最新发布的工具软件','cms，下载，最新，热门，最全，精品，建站，工具，安全，稳定','');
+INSERT INTO `#@__model_type` VALUES('4','video','视频','Video','Y','最新上映的电影、热门视频、热播电视剧、下载视频','视频，电影，微电影，电视剧，MV，MTV，最新，热门，热播，高清，下载','');
+INSERT INTO `#@__model_type` VALUES('5','goods','商品','Goods','Y','商品','商品','');
 
 -- 第三方授权表 --
 INSERT INTO `#@__oauth` VALUES('qq','QQ','{\"appid\":\"\",\"appkey\":\"\",\"callback\":\"http:\\/\\/www.yiifcms.com\\/oAuth\\/qq_callback\",\"scope\":\"get_user_info,add_t,del_t,get_info\",\"errorReport\":true,\"storageType\":\"file\"}','Y');
@@ -53,14 +53,14 @@ INSERT INTO `#@__setting` VALUES('email','email_timeout','2');
 INSERT INTO `#@__setting` VALUES('email','email_totest','');
 INSERT INTO `#@__setting` VALUES('email','email_username','');
 INSERT INTO `#@__setting` VALUES('base','safe_str','!(*&%');
-INSERT INTO `#@__setting` VALUES('seo','seo_description','yiifcms是基于yii框架开发的内容管理系统，功能强大，运行高效，稳定安全，是学习php和建站的良好选择。');
-INSERT INTO `#@__setting` VALUES('seo','seo_keywords','yii,cms,framework,php,mysql,html,nginx,web,js,下载,手册,版本,系统');
-INSERT INTO `#@__setting` VALUES('seo','seo_title','yiifcms打造顶级内容管理系统');
+INSERT INTO `#@__setting` VALUES('seo','seo_description','');
+INSERT INTO `#@__setting` VALUES('seo','seo_keywords','姗妮图库,性感美女,风景壁纸,搞笑内涵,创意奇闻');
+INSERT INTO `#@__setting` VALUES('seo','seo_title','姗妮图库');
 INSERT INTO `#@__setting` VALUES('base','site_closed_summary','系统维护中，请稍候......');
 INSERT INTO `#@__setting` VALUES('base','site_copyright','Copyright @ 2014-2015');
 INSERT INTO `#@__setting` VALUES('base','site_domain','/');
-INSERT INTO `#@__setting` VALUES('base','site_icp','京ICP备XXXXXX号-1');
-INSERT INTO `#@__setting` VALUES('base','site_name','yiifcms打造顶级内容管理系统');
+INSERT INTO `#@__setting` VALUES('base','site_icp','Copyright Reserved');
+INSERT INTO `#@__setting` VALUES('base','site_name','Beautiful Pictures');
 INSERT INTO `#@__setting` VALUES('base','site_stats','');
 INSERT INTO `#@__setting` VALUES('cache','cache_status','open');
 INSERT INTO `#@__setting` VALUES('cache','cache_type','filecache');
