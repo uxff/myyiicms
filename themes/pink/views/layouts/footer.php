@@ -20,7 +20,7 @@
 				<li><a href="<?php echo $this->createUrl('question/index');?>" rel="nofollown">留言反馈</a></li>	
 			</ul>
 		</li>
-		<li class="footer_right">
+		<li class="footer_right" style="display:none">
 			<h2><strong>友情链接</strong></h2>			
 			<div class="clear">
 				<label><img width="70" src="<?php echo $this->_stylePath;?>/images/qrcode-yiiframework.png" /></label>
