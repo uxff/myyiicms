@@ -21,11 +21,11 @@ INSERT INTO `#@__catalog` VALUES('12','1','0','创意奇趣','','','','','','','
 -- 导航 --
 INSERT INTO `#@__menu` VALUES('1','首页','/','index','Y','0','0','N');
 INSERT INTO `#@__menu` VALUES('2','资讯新闻','/post/index','post','N','0','0','N');
-INSERT INTO `#@__menu` VALUES('3','美女写真','/image/index/cat_5','image','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('4','动漫图片','/image/index/cat_9','image','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('5','风景壁纸','/image/index/cat_10','image','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('6','搞笑内涵','/image/index/cat_11','image','Y','0','6','N');
-INSERT INTO `#@__menu` VALUES('7','创意奇趣','/image/index/cat_12','image','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('3','美女写真','/image/index/cat_5','image_cat_5','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('4','动漫图片','/image/index/cat_9','image_cat_9','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('5','风景壁纸','/image/index/cat_10','image_cat_10','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('6','搞笑内涵','/image/index/cat_11','image_cat_11','Y','0','6','N');
+INSERT INTO `#@__menu` VALUES('7','创意奇趣','/image/index/cat_12','image_cat_12','Y','0','0','N');
 INSERT INTO `#@__menu` VALUES('8','讨论区','http://bbs.yiifcms.com/','bbs','N','0','0','Y');
 
 -- 内容模型 --

@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <th height="30" align="right">数据表前缀：</th>
-        <td><input value="yiif_" type="text" name="tbPre" id="tbPre" class="class_input" />
+        <td><input value="yii_" type="text" name="tbPre" id="tbPre" class="class_input" />
           <span class="cnote">同一数据库运行多个程序时，请修改前缀</span></td>
       </tr>
     </table>
