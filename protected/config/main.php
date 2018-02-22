@@ -87,7 +87,7 @@ $config = array(
 				'sessionTableName' => 'yii_session',
 				'timeout'=>3600,    //default 1440 seconds
 				'autoStart'=>true,								
-				'sessionName'=>'YIIS',	
+				'sessionName'=>'YFCMSSN',	
 		),
 		
 		//Configure Authorization Manager

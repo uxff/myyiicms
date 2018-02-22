@@ -49,7 +49,7 @@ $config = array(
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(			
-			//'urlFormat'=>'path',
+			'urlFormat'=>'path',
 			'showScriptName'=>false,			
 			//'urlSuffix'=>'/',			
 			'rules'=>array(
@@ -79,17 +79,17 @@ $config = array(
 				'password'=>'default',
 				'emulatePrepare'=>true,  // needed by some MySQL installations
 				'charset'=>'utf8',
-				'tablePrefix' => 'yiif_',
+				'tablePrefix' => 'yii_',
 		),
 		
 		//Configure SESSION 
 		'session'=>array(
 				'class'=>'CDbHttpSession',
 				'connectionID' => 'db',
-				'sessionTableName' => 'yiif_session',
+				'sessionTableName' => 'yii_session',
 				'timeout'=>3600,    //default 1440 seconds
 				'autoStart'=>true,								
-				'sessionName'=>'YFCMSSN',	
+				'sessionName'=>'YIIS',	
 		),
 		
 		//Configure Authorization Manager

@@ -6,34 +6,34 @@
 --  @version 1.4.1
 
 -- 栏目 --
-INSERT INTO `#@__catalog` VALUES('1','1','0','资讯','','','','','','','0','0','Y','','1379545020','1418373077');
+INSERT INTO `#@__catalog` VALUES('1','1','0','资讯新闻','','','','','','','0','0','Y','','1379545020','1418373077');
 INSERT INTO `#@__catalog` VALUES('2','1','1','社会新闻','','','','','','','2','0','Y','','1379545199','1404109846');
 INSERT INTO `#@__catalog` VALUES('3','1','1','科技新闻','','','','','','','1','0','Y','','1379545248','1407122169');
-INSERT INTO `#@__catalog` VALUES('4','1','0','美女','','','','','','','0','0','Y','','1379545330','1394517482');
-INSERT INTO `#@__catalog` VALUES('5','1','4','美女写真','','','','','','','1','0','Y','','1379545388','1394517482');
-INSERT INTO `#@__catalog` VALUES('6','1','4','明星图片','','','','','','','0','0','Y','','1379545435','1394517482');
-INSERT INTO `#@__catalog` VALUES('8','1','0','动漫','','','','','','','0','0','Y','','0','1399616730');
-INSERT INTO `#@__catalog` VALUES('9','1','8','动漫图片','','','','','','','0','0','Y','','0','1399616723');
-INSERT INTO `#@__catalog` VALUES('10','1','0','风景','','','','','','','0','0','Y','','1400489000','1407117706');
-INSERT INTO `#@__catalog` VALUES('11','1','0','搞笑','','','','','','','0','0','Y','','1400489000','1407117706');
-INSERT INTO `#@__catalog` VALUES('12','1','0','创意','','','','','','','0','0','Y','','1400828336','1407120434');
+INSERT INTO `#@__catalog` VALUES('4','2','0','性感美女','','','','','','','0','0','Y','','1379545330','1394517482');
+INSERT INTO `#@__catalog` VALUES('5','2','4','美女写真','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('6','2','4','明星图片','','','','','','','0','0','Y','','1379545435','1394517482');
+INSERT INTO `#@__catalog` VALUES('8','2','0','动漫卡通','','','','','','','0','0','Y','','0','1399616730');
+INSERT INTO `#@__catalog` VALUES('9','2','8','动漫图片','','','','','','','0','0','Y','','0','1399616723');
+INSERT INTO `#@__catalog` VALUES('10','2','0','风景壁纸','','','','','','','0','0','Y','','1400489000','1407117706');
+INSERT INTO `#@__catalog` VALUES('11','2','0','搞笑内涵','','','','','','','0','0','Y','','1400489000','1407117706');
+INSERT INTO `#@__catalog` VALUES('12','1','0','创意奇趣','','','','','','','0','0','Y','','1400828336','1407120434');
 
 -- 导航 --
-INSERT INTO `#@__menu` VALUES('1','首页','index.php','index','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('2','资讯新闻','?r=post/index','post','N','0','0','N');
-INSERT INTO `#@__menu` VALUES('3','美女写真','?r=image/index','image','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('4','动漫图片','?r=soft/index','soft','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('5','风景壁纸','?r=video/index','video','Y','0','0','N');
-INSERT INTO `#@__menu` VALUES('6','搞笑内涵','?r=page/guide','guide','Y','0','6','N');
-INSERT INTO `#@__menu` VALUES('7','创意奇趣','?r=question/index','question','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('1','首页','/','index','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('2','资讯新闻','/post/index','post','N','0','0','N');
+INSERT INTO `#@__menu` VALUES('3','美女写真','/image/index/cat_5','image','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('4','动漫图片','/image/index/cat_9','image','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('5','风景壁纸','/image/index/cat_10','image','Y','0','0','N');
+INSERT INTO `#@__menu` VALUES('6','搞笑内涵','/image/index/cat_11','image','Y','0','6','N');
+INSERT INTO `#@__menu` VALUES('7','创意奇趣','/image/index/cat_12','image','Y','0','0','N');
 INSERT INTO `#@__menu` VALUES('8','讨论区','http://bbs.yiifcms.com/','bbs','N','0','0','Y');
 
 -- 内容模型 --
-INSERT INTO `#@__model_type` VALUES('1','post','文章','Post','Y','最新权威的网络资讯，科技动态，社会新闻','互联网，IT，文章，博文，资讯，最新，优秀','');
+INSERT INTO `#@__model_type` VALUES('1','post','文章','Post','Y','最新权威的网络资讯，科技动态，社会新闻','互联网，IT，文章，博文，资讯，最新，优秀','最新权威的网络资讯，科技动态，社会新闻');
 INSERT INTO `#@__model_type` VALUES('2','image','图集','Image','Y','最新最全的热门图集、爆图、美图','图片，图集，最新，热门，精品，最全，美女，爆料，搞笑','展示了用户最喜爱的美女图片、爆料图片、搞笑图片，惊爆眼球。');
-INSERT INTO `#@__model_type` VALUES('3','soft','软件','Soft','Y','最新发布的工具软件','cms，下载，最新，热门，最全，精品，建站，工具，安全，稳定','');
-INSERT INTO `#@__model_type` VALUES('4','video','视频','Video','Y','最新上映的电影、热门视频、热播电视剧、下载视频','视频，电影，微电影，电视剧，MV，MTV，最新，热门，热播，高清，下载','');
-INSERT INTO `#@__model_type` VALUES('5','goods','商品','Goods','Y','商品','商品','');
+INSERT INTO `#@__model_type` VALUES('3','soft','软件','Soft','Y','最新发布的工具软件','cms，下载，最新，热门，最全，精品，建站，工具，安全，稳定','最新发布的工具软件');
+INSERT INTO `#@__model_type` VALUES('4','video','视频','Video','Y','最新上映的电影、热门视频、热播电视剧、下载视频','视频，电影，微电影，电视剧，MV，MTV，最新，热门，热播，高清，下载','最新上映的电影、热门视频、热播电视剧、下载视频');
+INSERT INTO `#@__model_type` VALUES('5','goods','商品','Goods','Y','商品','商品','商品');
 
 -- 第三方授权表 --
 INSERT INTO `#@__oauth` VALUES('qq','QQ','{\"appid\":\"\",\"appkey\":\"\",\"callback\":\"http:\\/\\/www.yiifcms.com\\/oAuth\\/qq_callback\",\"scope\":\"get_user_info,add_t,del_t,get_info\",\"errorReport\":true,\"storageType\":\"file\"}','Y');
@@ -60,7 +60,7 @@ INSERT INTO `#@__setting` VALUES('base','site_closed_summary','系统维护中�
 INSERT INTO `#@__setting` VALUES('base','site_copyright','Copyright @ 2014-2015');
 INSERT INTO `#@__setting` VALUES('base','site_domain','/');
 INSERT INTO `#@__setting` VALUES('base','site_icp','Copyright Reserved');
-INSERT INTO `#@__setting` VALUES('base','site_name','Beautiful Pictures');
+INSERT INTO `#@__setting` VALUES('base','site_name','姗妮图库');
 INSERT INTO `#@__setting` VALUES('base','site_stats','');
 INSERT INTO `#@__setting` VALUES('cache','cache_status','open');
 INSERT INTO `#@__setting` VALUES('cache','cache_type','filecache');

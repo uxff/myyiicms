@@ -26,3 +26,29 @@ Github: https://github.com/github-zjh/yiifcms
 欢迎有兴趣的童鞋 下载并使用 如果您有关于yiifcms的问题 可以致邮：xb_zjh@126.com  或者+私人QQ：326196998
 你们的支持是我最大的动力，目前更多功能正在开发，欢迎多提建议。
     
+nginx:
+```
+if (!-e $request_filename) {
+    rewrite ^/(.*) /index.php last;
+}
+```
+
+apache: .htaccess
+```
+<IfModule mod_rewrite.c>   
+  
+  
+Options +FollowSymLinks  
+IndexIgnore */*  
+RewriteEngine on  
+  
+# if a directory or a file exists, use it directly  
+RewriteCond %{REQUEST_FILENAME} !-f  
+RewriteCond %{REQUEST_FILENAME} !-d  
+  
+# otherwise forward it to index.php  
+RewriteRule . index.php  
+#RewriteRule ^/(.*) index.php?r=$1
+  
+</IfModule>  
+```

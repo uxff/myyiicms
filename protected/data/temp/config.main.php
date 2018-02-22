@@ -47,7 +47,7 @@ $config = array(
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(			
-			//'urlFormat'=>'path',
+			'urlFormat'=>'path',
 			'showScriptName'=>false,			
 			//'urlSuffix'=>'/',			
 			'rules'=>array(
@@ -87,7 +87,7 @@ $config = array(
 				'sessionTableName' => '~dbPre~session',
 				'timeout'=>3600,    //default 1440 seconds
 				'autoStart'=>true,								
-				'sessionName'=>'YFCMSSN',	
+				'sessionName'=>'YIIS',	
 		),
 		
 		//Configure Authorization Manager
