@@ -8,7 +8,7 @@
 			<?php foreach((array)$navs as $nav):?>			
 			<?php if($nav && is_array($nav)):?>
 			<li>
-				<span>></span>
+				<span>&gt;</span>
 				<a href="<?php echo $nav['url'];?>"><?php echo $nav['name'];?></a>
 			</li>
 			<?php endif;?>

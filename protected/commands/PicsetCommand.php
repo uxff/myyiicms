@@ -24,7 +24,7 @@ class PicsetCommand  extends CConsoleCommand
     }
 */
 
-    public function actionIndex($dir = '.', $deep = 1, $webroot = '', $cata = 0) {
+    public function actionIndex($dir = '.', $deep = 1, $webroot = '', $cata = 0, $saveLimit = 10) {
         Yii::log('will start dir='.$dir.' deep='.$deep.' webroot='.$webroot, 'warning', __METHOD__);
         
         echo "this function at cwd=".getcwd()." target dir=$dir deep=$deep webroot=$webroot\n";
@@ -70,7 +70,7 @@ class PicsetCommand  extends CConsoleCommand
         
         // 将图集入库
         //if (false)
-        $this->savePicsets($picsets, $cata);
+        $this->savePicsets($picsets, $cata, $saveLimit);
     }
     
 
@@ -176,11 +176,15 @@ class PicsetCommand  extends CConsoleCommand
         }
     }
     
-    public function savePicsets(array $picsets, $cata = 0) {
+    public function savePicsets(array $picsets, $cata = 0, $limit = 10) {
         $i = 0;
         echo "all ".count($picsets)." will be saved!\n";
         foreach ($picsets as $picset) {
             
+            if ($i >= $limit) {
+                break;
+            }
+
             $model = new Image();
             $model->create_time = time();
             $model->update_time = $model->create_time;
@@ -202,9 +206,7 @@ class PicsetCommand  extends CConsoleCommand
                 print_r($error);
             }
             
-            if (++$i > 10) {
-                break;
-            }
+            ++$i;
             if ($i%100 == 0) {
                 echo "$i saved\n";
             }
