@@ -53,6 +53,16 @@
       <td ><input type="text" class="txt w400" name="Setting[site_copyright]" value="<?php echo $setting['site_copyright']?>" /></td>
     </tr>
     <tr>
+      <td class="tb_title"><?php echo Yii::t('admin','Statistical Code');?>(HTML Header)：</td>
+    </tr>
+    <tr >
+      <td >
+      	<textarea  rows="6" name="Setting[site_stats_header]" id="site_stats_header" cols="50" class="tarea "><?php echo $setting['site_stats_header']?></textarea>
+        <?php echo Yii::t('admin','Please Input Statistical Code');?>
+        </td>
+    </tr>
+    
+    <tr>
       <td class="tb_title"><?php echo Yii::t('admin','Statistical Code');?>：</td>
     </tr>
     <tr >

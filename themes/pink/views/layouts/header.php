@@ -12,6 +12,7 @@
 	<meta name="HandheldFriendly" content="true">
 	<link rel="stylesheet" type="text/css" media="only screen and (max-width:720px),only screen and (max-device-width:720px)" href="<?php echo $this->_stylePath;?>/css/media.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->_stylePath;?>/css/customer.css" />
+    <?php echo $this->_setting['site_stats_header'];?>
 </head>
 <body>
 <!-- 头部header开始 -->
