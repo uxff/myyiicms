@@ -27,6 +27,9 @@ class ImageController extends FrontBase
 	  public function actionIndex() {  	
 	    $catalog_id = trim( $this->_request->getParam( 'catalog_id' ) );
 	    $keyword = trim( $this->_request->getParam( 'keyword' ) );
+        
+        // 用这种方式区分，设计不太好
+        $this->_menu_unique = 'image_cat_'.$catalog_id;
 	  
 	    //获取子孙分类(包括本身)
 	    $data = Catalog::model()->getChildren($catalog_id);
