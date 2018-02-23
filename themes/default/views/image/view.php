@@ -34,7 +34,7 @@
 						<div id="append_parent"></div><div id="ajaxwaitid"></div>
 						<ul class="small_pics clear">								
 							<?php foreach((array)$pics as $spic):?>
-							<li><img width="100" height="100" alt="<?php echo $spic['desc'];?>" title="<?php echo $spic['desc'];?>" src="<?php echo $spic['thumb'];?>" /></li>
+							<li><img style="width:auto;height:auto;max-height:100px;" alt="<?php echo $spic['desc'];?>" title="<?php echo $spic['desc'];?>" src="<?php echo $spic['thumb']?:$spic['file'];?>" /></li>
 							<?php endforeach;?>										
 						</ul>	
 						<?php endif;?>
