@@ -94,13 +94,13 @@ class PicsetCommand  extends CConsoleCommand
                             call_user_func($dirfunc, $dir.DS.$sub, $deep);
                         }
                         $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfunc); 
-                    }else {
-                        echo "cannot recognize file:$dir/$sub\n";
+                    //}else {
+                    //    echo "cannot recognize file:$dir/$sub\n";
                     }
                     
-                    if ($sub == 'config.json') {
-                        $this->configuredPicset[] = $dir.DS.$sub;
-                    }
+                    //if ($sub == 'config.json') {
+                    //    $this->configuredPicset[] = $dir.DS.$sub;
+                    //}
                 } 
             }
             closedir($handler); 
@@ -235,24 +235,36 @@ class PicsetCommand  extends CConsoleCommand
         
         fputcsv($csvFile, ['md5','size','filepath']);
         $fileCount = 0;
+        $byteCount = 0;
 
         $this->configuredPicset = array();
         $this->selectedPicset = [];
         
-        $allDirs = $this->scanAllDir($dir, 100, function ($path, $deep) use (&$csvFile, &$fileCount) {
+        $this->scanAllDir($dir, 100, function ($path, $deep) use (&$csvFile, &$fileCount, &$byteCount) {
+
+            //if ($fileCount > 10) {
+            //    return;
+            //}
+            if (($fileCount+1)%1000==0) {
+                echo date('Y-m-d H:i:s ')."checking ".($fileCount+1).", bytes=$byteCount\n";
+                fflush($csvFile);
+                //unset($this->configuredPicset);
+                //unset($this->selectedPicset);
+            }
 
             $suffixs = explode('.', $path);
             if (count($suffixs) > 1) {
                 if (in_array(strtolower($suffixs[count($suffixs)-1]), ['jpg', 'gif', 'png', 'jpeg'])) {
+                    ++$fileCount;
                     $fileMd5 = md5_file($path);
                     $fileSize = filesize($path);
+                    $byteCount += $fileSize;
                     fputcsv($csvFile, [$fileMd5, $fileSize, $path]);
-                    ++$fileCount;
 
                     $sql = 'insert into yii_filecheck (filepath, md5, filesize) values(?,?,?)';
                     //Yii::app()->db->createCommand($sql, array($path, $fileMd5, $fileSize))/*->bindParam()*/->execute();
                     Yii::app()->db->createCommand()->insert('yii_filecheck', [
-                        'filepath' => $path,
+                        'filepath' => mb_convert_encoding($path, 'utf8', 'gbk'),
                         'md5' => $fileMd5,
                         'filesize' => $fileSize,
                     ]);
@@ -261,7 +273,7 @@ class PicsetCommand  extends CConsoleCommand
 
         });
         
-        echo "all checked file:$fileCount "."\n";
+        echo date('Y-m-d H:i:s ')."all checked file:$fileCount byte:$byteCount"."\n";
         
         fclose($csvFile);
         
