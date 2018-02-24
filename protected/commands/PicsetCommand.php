@@ -74,7 +74,7 @@ class PicsetCommand  extends CConsoleCommand
     }
     
 
-    function scanAllDir($dir, $deep = 0)  { 
+    function scanAllDir($dir, $deep = 0, callable $filefunc = null, callable $dirfunc = null)  { 
         if ($deep < 0) {
             return;
         }
@@ -85,9 +85,15 @@ class PicsetCommand  extends CConsoleCommand
                 if ($sub != '.' && $sub != '..' ) { 
                     //echo "got a sub:$dir/$sub\n";
                     if(is_file($dir.DS.$sub)) { 
+                        if ($filefunc != null) {
+                            call_user_func($filefunc, $dir.DS.$sub, $deep);
+                        }
                         $listDir[$sub] = filesize($dir.DS.$sub); 
                     }elseif(is_dir($dir.DS.$sub)){ 
-                        $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1); 
+                        if ($dirfunc != null) {
+                            call_user_func($dirfunc, $dir.DS.$sub, $deep);
+                        }
+                        $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfunc); 
                     }else {
                         echo "cannot recognize file:$dir/$sub\n";
                     }
@@ -222,5 +228,38 @@ class PicsetCommand  extends CConsoleCommand
 
     static public function base64url_decode( $data ){
       return base64_decode( strtr( $data, '-_', '+/') . str_repeat('=', 3 - ( 3 + strlen( $data )) % 4 ));
+    }
+    public function actionCheckdir($dir = '.', $out='filecheck.list.csv') {
+        
+        $csvFile = fopen($out, 'w');
+        
+        fputcsv($csvFile, ['md5','size','filepath']);
+        $fileCount = 0;
+
+        $this->configuredPicset = array();
+        $this->selectedPicset = [];
+        
+        
+        
+        $allDirs = $this->scanAllDir($dir, 100, function ($path, $deep) use (&$csvFile, &$fileCount) {
+            // file
+            
+            $fileMd5 = md5_file($path);
+            $fileSize = filesize($path);
+            fputcsv($csvFile, [$fileMd5, $fileSize, $path]);
+            ++$fileCount;
+            $sql = 'insert into yii_filecheck (filepath, md5, filesize) values(?,?,?)';
+            //Yii::app()->db->createCommand($sql, array($path, $fileMd5, $fileSize))/*->bindParam()*/->execute();
+            Yii::app()->db->createCommand()->insert('yii_filecheck', [
+                'filepath' => $path,
+                'md5' => $fileMd5,
+                'filesize' => $fileSize,
+            ]);
+        });
+        
+        echo "all checked file:$fileCount "."\n";
+        
+        fclose($csvFile);
+        
     }
 }
