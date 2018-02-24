@@ -239,22 +239,26 @@ class PicsetCommand  extends CConsoleCommand
         $this->configuredPicset = array();
         $this->selectedPicset = [];
         
-        
-        
         $allDirs = $this->scanAllDir($dir, 100, function ($path, $deep) use (&$csvFile, &$fileCount) {
-            // file
-            
-            $fileMd5 = md5_file($path);
-            $fileSize = filesize($path);
-            fputcsv($csvFile, [$fileMd5, $fileSize, $path]);
-            ++$fileCount;
-            $sql = 'insert into yii_filecheck (filepath, md5, filesize) values(?,?,?)';
-            //Yii::app()->db->createCommand($sql, array($path, $fileMd5, $fileSize))/*->bindParam()*/->execute();
-            Yii::app()->db->createCommand()->insert('yii_filecheck', [
-                'filepath' => $path,
-                'md5' => $fileMd5,
-                'filesize' => $fileSize,
-            ]);
+
+            $suffixs = explode('.', $path);
+            if (count($suffixs) > 1) {
+                if (in_array(strtolower($suffixs[count($suffixs)-1]), ['jpg', 'gif', 'png', 'jpeg'])) {
+                    $fileMd5 = md5_file($path);
+                    $fileSize = filesize($path);
+                    fputcsv($csvFile, [$fileMd5, $fileSize, $path]);
+                    ++$fileCount;
+
+                    $sql = 'insert into yii_filecheck (filepath, md5, filesize) values(?,?,?)';
+                    //Yii::app()->db->createCommand($sql, array($path, $fileMd5, $fileSize))/*->bindParam()*/->execute();
+                    Yii::app()->db->createCommand()->insert('yii_filecheck', [
+                        'filepath' => $path,
+                        'md5' => $fileMd5,
+                        'filesize' => $fileSize,
+                    ]);
+                }
+            }
+
         });
         
         echo "all checked file:$fileCount "."\n";
