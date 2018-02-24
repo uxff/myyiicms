@@ -37,7 +37,7 @@
 			<span><?php echo $this->_setting['site_copyright'];?></span>	
 			<span><a href="http://www.miitbeian.gov.cn/" target="_blank"><?php echo $this->_setting['site_icp'];?></a></span>			
 			<ul class="outer">
-				<li><?php echo $this->_setting['site_stats'];?></li>			
+				<li></li>			
 			</ul>
 		</div>		
 	</div>
@@ -89,5 +89,6 @@ function ajaxClick(act) {
 <!-- 弹窗内容区域开始 -->
 <div id="ajaxDialog"></div>
 <!-- 弹窗内容区域结束 -->
+<?php echo $this->_setting['site_stats'];?>
 </body>
 </html>

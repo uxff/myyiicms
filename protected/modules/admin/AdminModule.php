@@ -37,6 +37,11 @@ class AdminModule extends CWebModule
 
 	public function beforeControllerAction($controller, $action)
 	{
+        $myhost = $_SERVER['HTTP_HOST'];
+        if (!strpos($myhost, 'myyiicms.com')) {
+            throw new CHttpException( 404, Yii::t('common','The requested page does not exist.') );
+        }
+
 		if(parent::beforeControllerAction($controller, $action))
 		{
 			// this method is called before any module controller action is performed

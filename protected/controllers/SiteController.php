@@ -34,11 +34,11 @@ class SiteController extends FrontBase
 		Yii::app()->clientScript->registerScriptFile($this->_static_public . "/js/jquery/jquery.easytabs.min.js");
 		
 		//头部banner
-		$index_top_banner = Ad::model()->getAdOne(4);
+		//$index_top_banner = Ad::model()->getAdOne(4);
 		//中部banner
-		$index_mid_banner = Ad::model()->getAdOne(3);
+		//$index_mid_banner = Ad::model()->getAdOne(3);
 		//底部banner
-		$index_bottom_banner = Ad::model()->getAdOne(5);
+		//$index_bottom_banner = Ad::model()->getAdOne(5);
 		
 		//最新资讯
 		Yii::app()->cache && $news_new = Yii::app()->cache->get('news_new');
@@ -46,6 +46,7 @@ class SiteController extends FrontBase
 			$news_new = Post::model()->getList(array('limit'=>20));
 			Yii::app()->cache && Yii::app()->cache->set('news_new', $news_new);
 		}
+
 		//热门资讯		
 		Yii::app()->cache && $news_hot = Yii::app()->cache->get('news_host');
 		if($news_hot == false){
@@ -53,15 +54,19 @@ class SiteController extends FrontBase
 			Yii::app()->cache && Yii::app()->cache->set('news_hot', $news_hot);
 		}
 		
+        //图集类别
+        $image_cat2 = Catalog::model()->findAll('type=2 and parent_id !=0', array('limit'=>12));
+        
+        
 		//最新图集
 		$image_new = Image::model()->getList(array('limit'=>10));
 		//热门图集
 		$image_hot = Image::model()->getList(array('limit'=>10, 'order'=>'view_count DESC, t.id DESC'));
 		
 		//最新软件
-		$soft_new = Soft::model()->getList(array('limit'=>20));		
+		//$soft_new = Soft::model()->getList(array('limit'=>20));		
 		//热门软件		
-		$soft_hot = Soft::model()->getList(array('limit'=>10, 'order'=>'down_count DESC, t.id DESC'));
+		//$soft_hot = Soft::model()->getList(array('limit'=>10, 'order'=>'down_count DESC, t.id DESC'));
 	
 		//最新视频		
 		//$video_new = Video::model()->findAll("status=:status AND catalog_id = 13 ORDER BY id DESC Limit 20", array(':status'=>'Y'));
@@ -82,10 +87,11 @@ class SiteController extends FrontBase
 					'news_hot',
 					'image_new',
 					'image_hot',
-					'soft_new',
-					'soft_hot',
-					'video_new',
-					'video_hot',						
+					//'soft_new',
+					//'soft_hot',
+					//'video_new',
+					//'video_hot',	
+                    'image_cat2',
 			)
 		));
 	}

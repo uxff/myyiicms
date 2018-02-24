@@ -6,9 +6,6 @@
 	<meta name="language" content="<?php echo $this->_yii->language;?>" />
 	<meta name="keywords" content="<?php echo $this->_seoKeywords;?>" />
 	<meta name="description" content="<?php echo $this->_seoDescription;?>" />
-    <meta name="author" content="uxff <uxff@qq.com>" />
-    <meta name="cmsVersion" content="<?php echo $this->_cmsVersion;?>" />
-    <meta name="cmsRelease" content="<?php echo $this->_cmsRelease;?>" />
 	<meta property="qc:admins" content="3621316677611163536375" />
 	<meta property="wb:webmaster" content="cca24d5480c4043c" />	
 	<!-- 手持设备样式 -->
@@ -17,6 +14,7 @@
 	<meta name="HandheldFriendly" content="true">
 	<link rel="stylesheet" type="text/css" media="only screen and (max-width:720px),only screen and (max-device-width:720px)" href="<?php echo $this->_stylePath;?>/css/media.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->_stylePath;?>/css/customer.css" />
+    <?php echo $this->_setting['site_stats_header'];?>
 </head>
 <body>
 <!-- 头部header开始 -->

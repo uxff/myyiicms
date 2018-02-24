@@ -6,21 +6,26 @@
 		</div>
         -->
 		<div class="intro_title">
-           <p>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">清纯美女</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">明星写真</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">校园甜美</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">唯美系列</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">动漫图片</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">热辣美女</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">娱乐八卦</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">搞笑图片</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">乡村爱情</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">都市白领</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">自然归真</a>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">气质女神</a>
-           </p>
-           <p>
+            <p data-line="first line">
+            <?php foreach ($image_cat2 as $k=>$image_cat):?>
+                <a href="<?php echo $image_cat['redirect_url'] ? :$this->createUrl('image/index', array('catalog_id'=>$image_cat['id']))?>"><?=$image_cat['catalog_name']?></a>
+            <?php endforeach;?>
+            </p>
+            <p>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">美女写真</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'24'))?>">清纯美女</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">明星图片</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">校园甜美</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">唯美系列</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">热辣美女</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">动漫图片</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">娱乐八卦</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">搞笑图片</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">都市白领</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">自然归真</a>
+                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">气质女神</a>
+            </p>
+            <p>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">山东美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">江苏美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">浙江美女</a>
@@ -33,7 +38,7 @@
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">云南美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">四川美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">重庆美女</a>
-           </p>
+            </p>
 		</div>
 		<!-- 首页头部banner开始 -->
 		<?php if($index_top_banner):?>	

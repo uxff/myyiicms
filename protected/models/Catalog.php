@@ -199,7 +199,7 @@ class Catalog extends CActiveRecord
 	}
 	
 	/**
-	 * 所有栏目分类
+	 * 所有栏目分类 供getChildren调用
 	 * @param number $parentid
 	 * @param number $level
 	 * @param array $array
