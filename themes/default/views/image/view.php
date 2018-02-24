@@ -7,7 +7,7 @@
 				<div class="list_body">	
 					<h2><?php echo CHtml::encode($post->title);?></h2>
 					<p class="view_info">
-						<span><?php echo Yii::t('common','Copy From')?>： <em><?php echo $post->copy_from?"<a href='".$post->copy_url."' target='_blank'>".$post->copy_from."</a>":Yii::t('common','System Manager');?></em></span>
+						<?php echo $post->copy_from?'<span>'.Yii::t('common','Copy From').":<em><a href='".$post->copy_url."' target='_blank'>".$post->copy_from."</a></em></span>":'';?>
 						<?php $post_tags = $post->tags?explode(',',$post->tags):array(); $tags_len = count($post_tags);?>
 						<?php if($tags_len > 0):?>
 						<span class="tags">

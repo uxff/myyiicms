@@ -12,20 +12,6 @@
             <?php endforeach;?>
             </p>
             <p>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">美女写真</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'24'))?>">清纯美女</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">明星图片</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">校园甜美</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">唯美系列</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">热辣美女</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">动漫图片</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">娱乐八卦</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">搞笑图片</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">都市白领</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">自然归真</a>
-                <a href="<?php echo $this->createUrl('image/index', array('catalog_id'=>'feature'))?>">气质女神</a>
-            </p>
-            <p>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">山东美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">江苏美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">浙江美女</a>
@@ -47,34 +33,6 @@
 		</a>
 		<?php endif;?>
 		<!-- 首页头部banner结束 -->	
-       <!--
-		<ul class="intro_box clear">
-			<li>
-				<div class="ico_one"></div>
-				<h2>安全可靠</h2>
-				<p>xx币是基于某某主流的区块链2.0技术实现，该技术相比上一代区块链技术更加安全可靠，并由某某基金会、某某机构监管下运行，运行机制公开透明。</p>
-				<a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>" target="_blank"><?php echo Yii::t('common','Read Details')?></a>
-			</li>
-			<li>
-				<div class="ico_one ico_two"></div>
-				<h2>去中心化</h2>
-				<p>xx币项目没有中心节点，所有节点平等，所有交易记录将备份在每个节点上，不依赖某中心服务器存储。没有权力机构干预，行情由市场自动调节。</p>
-				<a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>" target="_blank"><?php echo Yii::t('common','Read Details')?></a>
-			</li>
-			<li>
-				<div class="ico_one ico_three"></div>
-				<h2>开放源码</h2>
-				<p>xx币(xxcoin)是一个开源项目，你可以基于源码建立你的应用，也可以向开发团队贡献你的代码。</p>
-				<a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>" target="_blank"><?php echo Yii::t('common','Read Details')?></a>
-			</li>
-			<li class="last">
-				<div class="ico_one ico_four"></div>
-				<h2>自由交易</h2>
-				<p>任何安装xx币客户端的PC或手机，都可以成为xx币网络的节点，进行自由交易，并且手续费低廉。</p>
-				<a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>" target="_blank"><?php echo Yii::t('common','Read Details')?></a>
-			</li>
-		</ul>
-        -->
 	</div>
 	
 	<!-- 首页中部banner -->
@@ -86,28 +44,29 @@
 	
 	
 	<!-- 推荐图集区开始 -->
+    <?php for ($i=0; $i<intval(count($picsets)/2); ++$i):?>
 	<div class="tab_container">
 		<ul class="etabs text_align_left">			
-			<li class="tab"><a href="#tab_image1">性感美女</a></li>
-			<li class="tab"><a href="#tab_image2">热辣美女</a></li>
+			<li class="tab"><a href="#tab_image1"><?=$image_cat2[$i*2]['catalog_name']?></a></li>
+			<li class="tab"><a href="#tab_image2"><?=$image_cat2[$i*2+1]['catalog_name']?></a></li>
 		</ul>	
 		
 		<div class="panel_container">			
 			<ul id="tab_image1" class="tab_image clear">
-				<?php foreach((array)$image_new as $in):?>				
+				<?php foreach((array)$picsets[$i*2] as $in):?>				
 				<li>
 					<a href="<?php echo $this->createUrl('image/view', array('id'=>$in->id));?>">	
-						<img width="200" src="<?php echo $in->attach_thumb;?>" alt="<?php echo $in->title;?>" />
+						<img src="<?php echo $in->attach_thumb;?>" style="width:auto;height:auto;max-width:200px;" alt="<?php echo $in->title;?>" />
 						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($in->title, 20);?></span></em>
 					</a>					
 				</li>
 				<?php endforeach;?>
 			</ul>
 			<ul id="tab_image2" class="tab_image clear">
-				<?php foreach((array)$image_new as $in):?>				
+				<?php foreach((array)$picsets[$i*2+1] as $in):?>				
 				<li>
 					<a href="<?php echo $this->createUrl('image/view', array('id'=>$in->id));?>">	
-						<img width="200" src="<?php echo $in->attach_thumb;?>" alt="<?php echo $in->title;?>" />
+						<img src="<?php echo $in->attach_thumb;?>" style="width:auto;height:auto;max-width:200px;" alt="<?php echo $in->title;?>" />
 						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($in->title, 20);?></span></em>
 					</a>					
 				</li>
@@ -115,6 +74,7 @@
 			</ul>
 		</div>	
 	</div>
+    <?php endfor;?>
 	<!-- 推荐图集区结束 -->
 	
 	<!-- 推荐图集区开始 -->
@@ -129,7 +89,7 @@
 				<?php foreach((array)$image_hot as $ih):?>
 				<li>
 					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
+						<img src="<?php echo $ih->attach_thumb;?>" style="width:auto;height:auto;max-width:200px;" alt="<?php echo $ih->title;?>" />
 						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
 					</a>
 				</li>
@@ -139,7 +99,7 @@
 				<?php foreach((array)$image_hot as $ih):?>
 				<li>
 					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
+						<img src="<?php echo $ih->attach_thumb;?>" style="width:auto;height:auto;max-width:200px;" alt="<?php echo $ih->title;?>" />
 						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
 					</a>					
 				</li>

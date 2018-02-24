@@ -27,7 +27,7 @@
 						</p>
 						<p class="content_info clear ">
 							<?php if(file_exists(WWWPATH.'/'.$post->attach_thumb)):?>
-							<a class="content_cover" alt="<?php echo CHtml::encode($post->title);?>" title="<?php echo CHtml::encode($post->title);?>" href="<?php echo $this->createUrl('image/page', array('id'=>$post->id));?>"><img alt="<?php echo $post->tags;?>" src="<?php echo $post->attach_thumb;?>" /></a>
+							<a class="content_cover" alt="<?php echo CHtml::encode($post->title);?>" title="<?php echo CHtml::encode($post->title);?>" href="<?php echo $this->createUrl('image/page', array('id'=>$post->id));?>"><img style="width:auto;height:auto;max-width:800px;" alt="<?php echo $post->tags;?>" src="<?php echo $post->attach_thumb;?>" /></a>
 							<?php endif;?>								
 							<?php echo $post->introduce?$post->introduce:'...';?>
 						</p>

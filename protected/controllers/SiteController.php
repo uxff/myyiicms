@@ -56,12 +56,17 @@ class SiteController extends FrontBase
 		
         //图集类别
         $image_cat2 = Catalog::model()->findAll('type=2 and parent_id !=0', array('limit'=>12));
+        shuffle($image_cat2);
         
         
 		//最新图集
 		$image_new = Image::model()->getList(array('limit'=>10));
 		//热门图集
 		$image_hot = Image::model()->getList(array('limit'=>10, 'order'=>'view_count DESC, t.id DESC'));
+        $picsets = [];
+        foreach ($image_cat2 as $image_cat) {
+            $picsets[] = Image::model()->getList(array('condition'=>' and t.catalog_id = '.$image_cat['id'].' ', 'limit'=>10, 'order'=>'t.id DESC'));
+        }
 		
 		//最新软件
 		//$soft_new = Soft::model()->getList(array('limit'=>20));		
@@ -92,6 +97,7 @@ class SiteController extends FrontBase
 					//'video_new',
 					//'video_hot',	
                     'image_cat2',
+                    'picsets',
 			)
 		));
 	}
