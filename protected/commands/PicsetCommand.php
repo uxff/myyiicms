@@ -31,9 +31,15 @@ class PicsetCommand  extends CConsoleCommand
 
         $this->configuredPicset = array();
         $this->selectedPicset = [];
+        $configuredPicset = &$this->configuredPicset;
         
         // 扫描目录结构
-        $allDirs = $this->scanAllDir($dir, $deep);
+        $allDirs = $this->scanAllDir($dir, $deep, function ($path, $deep) use (&$configuredPicset) {
+            if (basename($path) == 'config.json') {
+                $configuredPicset[] = $path;
+            }
+            
+        });
 
         echo 'all='.json_encode($allDirs)."\n";
         echo 'config.json from scan='.count($this->configuredPicset).' 0='.$this->configuredPicset[0]."\n";
