@@ -63,11 +63,21 @@
     </tr>
     
     <tr>
-      <td class="tb_title"><?php echo Yii::t('admin','Statistical Code');?>：</td>
+      <td class="tb_title"><?php echo Yii::t('admin','Statistical Code');?>(In HTML body)：</td>
     </tr>
     <tr >
       <td >
       	<textarea  rows="6" name="Setting[site_stats]" id="site_stats" cols="50" class="tarea "><?php echo $setting['site_stats']?></textarea>
+        <?php echo Yii::t('admin','Please Input Statistical Code');?>
+        </td>
+    </tr>
+    
+    <tr>
+      <td class="tb_title"><?php echo Yii::t('admin','Statistical Code');?>(End of HTML body)：</td>
+    </tr>
+    <tr >
+      <td >
+      	<textarea  rows="6" name="Setting[site_stats_end_of_body]" id="site_stats_end_of_body" cols="50" class="tarea "><?php echo $setting['site_stats_end_of_body']?></textarea>
         <?php echo Yii::t('admin','Please Input Statistical Code');?>
         </td>
     </tr>

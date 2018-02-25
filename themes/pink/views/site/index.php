@@ -77,101 +77,7 @@
     <?php endfor;?>
 	<!-- 推荐图集区结束 -->
 	
-	<!-- 推荐图集区开始 -->
-	<div class="tab_container">
-		<ul class="etabs text_align_left">			
-			<li class="tab"><a href="#tab_image1">清纯甜美</a></li>
-			<li class="tab"><a href="#tab_image2">校花女神</a></li>
-		</ul>	
-		
-		<div class="panel_container">			
-			<ul id="tab_image1" class="tab_image clear">
-				<?php foreach((array)$image_hot as $ih):?>
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img src="<?php echo $ih->attach_thumb;?>" style="width:auto;height:auto;max-width:200px;" alt="<?php echo $ih->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
-					</a>
-				</li>
-				<?php endforeach;?>
-			</ul>
-			<ul id="tab_image2" class="tab_image clear">
-				<?php foreach((array)$image_hot as $ih):?>
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img src="<?php echo $ih->attach_thumb;?>" style="width:auto;height:auto;max-width:200px;" alt="<?php echo $ih->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
-					</a>					
-				</li>
-				<?php endforeach;?>			
-			</ul>
-		</div>	
-	</div>
-	<!-- 推荐图集区结束 -->
-	
-	<!-- 推荐图集区开始 -->
-	<div class="tab_container">
-		<ul class="etabs text_align_left">			
-			<li class="tab"><a href="#tab_image1">明星写真</a></li>
-			<li class="tab"><a href="#tab_image2">时尚伊人</a></li>
-		</ul>	
-		
-		<div class="panel_container">			
-			<ul id="tab_image1" class="tab_image clear">
-				<?php foreach((array)$image_hot as $ih):?>				
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
-					</a>					
-				</li>
-				<?php endforeach;?>			
-			</ul>
-			<ul id="tab_image2" class="tab_image clear">
-				<?php foreach((array)$image_hot as $ih):?>				
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
-					</a>					
-				</li>
-				<?php endforeach;?>			
-			</ul>
-		</div>	
-	</div>
-	<!-- 推荐图集区结束 -->
-	
-	<!-- 推荐图集区开始 -->
-	<div class="tab_container">
-		<ul class="etabs text_align_left">			
-			<li class="tab"><a href="#tab_image1">动漫图片</a></li>
-			<li class="tab"><a href="#tab_image2">唯美系列</a></li>
-		</ul>	
-		
-		<div class="panel_container">			
-			<ul id="tab_image1" class="tab_image clear">
-				<?php foreach((array)$image_hot as $ih):?>				
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
-					</a>					
-				</li>
-				<?php endforeach;?>			
-			</ul>
-			<ul id="tab_image2" class="tab_image clear">
-				<?php foreach((array)$image_hot as $ih):?>				
-				<li>
-					<a href="<?php echo $this->createUrl('image/view', array('id'=>$ih->id));?>">	
-						<img width="200" src="<?php echo $ih->attach_thumb;?>" alt="<?php echo $ih->title;?>" />
-						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($ih->title, 20);?></span></em>
-					</a>					
-				</li>
-				<?php endforeach;?>			
-			</ul>
-		</div>	
-	</div>
-	<!-- 推荐图集区结束 -->
+
 	
 	<!-- 推荐阅读区开始 -->
     <!--
@@ -198,40 +104,6 @@
     -->
 	<!-- 推荐阅读区结束 -->
 	
-	<!-- 推荐下载区开始 -->
-	<div class="tab_container">
-		<ul class="etabs text_align_left">
-			<li class="tab"><a href="#tab_soft1">最新下载</a></li>
-			<li class="tab"><a href="#tab_soft2">热门下载</a></li>		
-		</ul>	
-		
-		<div class="panel_container">
-			<ul id="tab_soft1" class="tab_soft clear">
-				<?php foreach((array)$soft_new as $sn):?>
-				<li>
-					<a href="<?php echo $this->createUrl('soft/view', array('id'=>$sn->id));?>" title="<?php echo $sn->title;?>">
-						<img class="dl_img" alt="<?php echo $sn->title;?>" src="<?php echo $sn->soft_icon;?>" width="70" height="70"/>											
-					</a>		
-					<a href="<?php echo $this->createUrl('soft/view', array('id'=>$sn->id));?>"><?php echo Helper::truncate_utf8_string($sn->title, 4);?></a>
-					<a href="<?php echo $this->createUrl('soft/download', array('id'=>$sn->id));?>" class="dl_btn" target="_blank">下载</a>			
-				</li>
-				<?php endforeach;?>				
-			</ul>	
-			
-			<ul id="tab_soft2" class="tab_soft clear">
-				<?php foreach((array)$soft_hot as $sh):?>
-				<li>
-					<a href="<?php echo $this->createUrl('soft/view', array('id'=>$sh->id));?>" title="<?php echo $sh->title;?>">
-						<img class="dl_img" alt="<?php echo $sh->title;?>" src="<?php echo $sh->soft_icon;?>" width="70" height="70"/>											
-					</a>		
-					<a href="<?php echo $this->createUrl('soft/view', array('id'=>$sh->id));?>"><?php echo Helper::truncate_utf8_string($sh->title, 4);?></a>
-					<a href="<?php echo $this->createUrl('soft/download', array('id'=>$sh->id));?>" class="dl_btn" target="_blank">下载</a>			
-				</li>
-				<?php endforeach;?>	
-			</ul>		
-		</div>		
-	</div>
-	<!-- 推荐下载区开始 -->
 	
 	<!-- 推荐教程区开始 -->
 	<?php if($video_new):?>
@@ -269,7 +141,7 @@
 			</ul>		
 		</div>		
 	</div>
-        <?php endif;?>
+    <?php endif;?>
 	<!-- 推荐教程区结束 -->
 	
 	
@@ -290,10 +162,12 @@
 
 
 	<div id="clients">
+		<?php if($link_logos && $link_texts):?>
 		<ul class="client_head clear">
 			<li class="client_title">友情链接</li>
 			<li class="client_line"><img width="1088" src="<?php echo $this->_stylePath;?>/images/grey_line_x.png" /></li>			
 		</ul>
+		<?php endif;?>
 		
 		<?php if($link_logos):?>
 		<ul class="client_body clear">
