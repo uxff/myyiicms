@@ -75,7 +75,7 @@ class PicsetCommand  extends CConsoleCommand
         
         
         // 将图集入库
-        //if (false)
+        if ($saveLimit > 0)
         $this->savePicsets($picsets, $cata, $saveLimit);
     }
     
@@ -86,8 +86,9 @@ class PicsetCommand  extends CConsoleCommand
         }
         //echo "will scan $dir\n";
         $listDir = array();
-        if($handler = opendir($dir)) { 
-            while (($sub = readdir($handler)) !== FALSE) { 
+        // 读在更改同级目录时会有问题
+        if($subdirs = scandir($dir)) { 
+            foreach ($subdirs as $sub) { 
                 if ($sub != '.' && $sub != '..' ) { 
                     //echo "got a sub:$dir/$sub\n";
                     if(is_file($dir.DS.$sub)) { 
@@ -109,9 +110,12 @@ class PicsetCommand  extends CConsoleCommand
                     //}
                 } 
             }
-            closedir($handler); 
             
             if ($rotateName = false) {
+                if (count($listDir) <= 1) {
+                    echo "only one file:".json_encode($listDir)." and ignore\n";
+                    return;
+                }
                 
                 // this will change dir, you should delete this
                 $title = basename($dir);
