@@ -264,11 +264,11 @@ class PicsetCommand  extends CConsoleCommand
         
     }
     // rename dir, make config.json
-    public function actionRenamedir($dir = '.') {
+    public function actionRenamedir($dir = '.', $deep = 10) {
         
-        Yii::log('will start dir='.$dir.' deep='.$deep.' webroot='.$webroot, 'warning', __METHOD__);
+        Yii::log('will start dir='.$dir.' deep='.$deep, 'warning', __METHOD__);
         
-        echo "this function at cwd=".getcwd()." target dir=$dir\n";
+        echo "this function at cwd=".getcwd()." target dir=$dir deep=$deep\n";
 
         $allDirs = $this->scanAllDir($dir, $deep, null, null, function ($path, $deep)  {
             $listDir = scandir($path);
