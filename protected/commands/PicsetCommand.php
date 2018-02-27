@@ -81,11 +81,14 @@ class PicsetCommand  extends CConsoleCommand
     
 
     // filefunc dirfuncBefore dirfuncAfter: function($path, $deep)
-    function scanAllDir($dir, $deep = 0, callable $filefunc = null, callable $dirfuncBefore = null, callable $dirfuncAfter = null)  { 
+    function scanAllDir($dir, $deep = 1, callable $filefunc = null, callable $dirfuncBefore = null, callable $dirfuncAfter = null)  { 
         if ($deep < 0) {
             return;
         }
         //echo "will scan $dir\n";
+        
+        $dirfuncBefore && call_user_func($dirfuncBefore, $dir, $deep);
+        
         $listDir = array();
         // 读在更改同级目录时会有问题
         if($subdirs = scandir($dir)) { 
@@ -93,52 +96,22 @@ class PicsetCommand  extends CConsoleCommand
                 if ($sub != '.' && $sub != '..' ) { 
                     //echo "got a sub:$dir/$sub\n";
                     if(is_file($dir.DS.$sub)) { 
-                        if ($filefunc != null) {
-                            call_user_func($filefunc, $dir.DS.$sub, $deep);
-                        }
+                        $filefunc && call_user_func($filefunc, $dir.DS.$sub, $deep);
                         $listDir[$sub] = filesize($dir.DS.$sub); 
                     }elseif(is_dir($dir.DS.$sub)){ 
-                        if ($dirfunc != null) {
-                            call_user_func($dirfunc, $dir.DS.$sub, $deep);
-                        }
-                        $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfunc, $dirfuncAfter); 
+                        $dirfuncBefore && call_user_func($dirfuncBefore, $dir.DS.$sub, $deep);
+                        $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfuncBefore, $dirfuncAfter); 
                         $dirfuncAfter && call_user_func($dirfuncAfter, $dir.DS.$sub, $deep);
                     //}else {
                     //    echo "cannot recognize file:$dir/$sub\n";
                     }
                     
-                    //if ($sub == 'config.json') {
-                    //    $this->configuredPicset[] = $dir.DS.$sub;
-                    //}
                 } 
             }
             
-            if ($rotateName = false) {
-                if (count($listDir) <= 1) {
-                    echo "only one file:".json_encode($listDir)." and ignore\n";
-                    return;
-                }
-                
-                // this will change dir, you should delete this
-                $title = basename($dir);
-                $titleFile = 'title.'.$title.'.txt';
-                file_put_contents($dir.DS.$titleFile, $title);
-                
-                $dirBase64Name = $this->base64url_encode($title);
-                $titleBasedFile = 'titlebase64.'.$dirBase64Name.'.txt';
-                
-                $titleUtf8 = mb_convert_encoding($title, 'utf8', 'gbk');
-                file_put_contents($dir.DS.'config.json', json_encode(['title'=>$titleUtf8]));
-                
-                file_put_contents($dir.DS.$titleBasedFile, $title);
-                //file_put_contents()
-                
-                // write title into config.json
-                
-                rename($dir, dirname($dir).DS.$dirBase64Name);
-            }
-            
         }
+        
+        $dirfuncAfter && call_user_func($dirfuncAfter, $dir, $deep);
         return $listDir;    
     }     
     
@@ -295,10 +268,8 @@ class PicsetCommand  extends CConsoleCommand
         
         Yii::log('will start dir='.$dir.' deep='.$deep.' webroot='.$webroot, 'warning', __METHOD__);
         
-        echo "this function at cwd=".getcwd()." target dir=$dir deep=$deep webroot=$webroot\n";
+        echo "this function at cwd=".getcwd()." target dir=$dir\n";
 
-        
-        // 扫描目录结构
         $allDirs = $this->scanAllDir($dir, $deep, null, null, function ($path, $deep)  {
             $listDir = scandir($path);
 
@@ -309,22 +280,19 @@ class PicsetCommand  extends CConsoleCommand
             }
             
             // this will change dir, you should delete this
-            $title = basename($dir);
+            $title = basename($path);
             $titleFile = 'title.'.$title.'.txt';
-            file_put_contents($dir.DS.$titleFile, $title);
+            file_put_contents($path.DS.$titleFile, $title);
             
             $dirBase64Name = $this->base64url_encode($title);
             $titleBasedFile = 'titlebase64.'.$dirBase64Name.'.txt';
             
             $titleUtf8 = mb_convert_encoding($title, 'utf8', 'gbk');
-            file_put_contents($dir.DS.'config.json', json_encode(['title'=>$titleUtf8]));
+            file_put_contents($path.DS.'config.json', json_encode(['title'=>$titleUtf8]));
             
-            file_put_contents($dir.DS.$titleBasedFile, $title);
-            //file_put_contents()
+            file_put_contents($path.DS.$titleBasedFile, $title);
             
-            // write title into config.json
-            
-            rename($dir, dirname($dir).DS.$dirBase64Name);
+            rename($path, dirname($path).DS.$dirBase64Name);
         });
         
 
