@@ -80,7 +80,8 @@ class PicsetCommand  extends CConsoleCommand
     }
     
 
-    function scanAllDir($dir, $deep = 0, callable $filefunc = null, callable $dirfunc = null)  { 
+    // filefunc dirfuncBefore dirfuncAfter: function($path, $deep)
+    function scanAllDir($dir, $deep = 0, callable $filefunc = null, callable $dirfuncBefore = null, callable $dirfuncAfter = null)  { 
         if ($deep < 0) {
             return;
         }
@@ -100,7 +101,8 @@ class PicsetCommand  extends CConsoleCommand
                         if ($dirfunc != null) {
                             call_user_func($dirfunc, $dir.DS.$sub, $deep);
                         }
-                        $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfunc); 
+                        $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfunc, $dirfuncAfter); 
+                        $dirfuncAfter && call_user_func($dirfuncAfter, $dir.DS.$sub, $deep);
                     //}else {
                     //    echo "cannot recognize file:$dir/$sub\n";
                     }
@@ -287,5 +289,45 @@ class PicsetCommand  extends CConsoleCommand
         
         fclose($csvFile);
         
+    }
+    // rename dir, make config.json
+    public function actionRenamedir($dir = '.') {
+        
+        Yii::log('will start dir='.$dir.' deep='.$deep.' webroot='.$webroot, 'warning', __METHOD__);
+        
+        echo "this function at cwd=".getcwd()." target dir=$dir deep=$deep webroot=$webroot\n";
+
+        
+        // 扫描目录结构
+        $allDirs = $this->scanAllDir($dir, $deep, null, null, function ($path, $deep)  {
+            $listDir = scandir($path);
+
+            if (count($listDir) <= 1) {
+                echo "only one file:".json_encode($listDir)." and remove\n";
+                rmdir($path);
+                return;
+            }
+            
+            // this will change dir, you should delete this
+            $title = basename($dir);
+            $titleFile = 'title.'.$title.'.txt';
+            file_put_contents($dir.DS.$titleFile, $title);
+            
+            $dirBase64Name = $this->base64url_encode($title);
+            $titleBasedFile = 'titlebase64.'.$dirBase64Name.'.txt';
+            
+            $titleUtf8 = mb_convert_encoding($title, 'utf8', 'gbk');
+            file_put_contents($dir.DS.'config.json', json_encode(['title'=>$titleUtf8]));
+            
+            file_put_contents($dir.DS.$titleBasedFile, $title);
+            //file_put_contents()
+            
+            // write title into config.json
+            
+            rename($dir, dirname($dir).DS.$dirBase64Name);
+        });
+        
+
+        echo 'all='.json_encode($allDirs)."\n";
     }
 }
