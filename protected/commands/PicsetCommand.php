@@ -101,7 +101,8 @@ class PicsetCommand  extends CConsoleCommand
                     }elseif(is_dir($dir.DS.$sub)){ 
                         $dirfuncBefore && call_user_func($dirfuncBefore, $dir.DS.$sub, $deep);
                         $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfuncBefore, $dirfuncAfter); 
-                        $dirfuncAfter && call_user_func($dirfuncAfter, $dir.DS.$sub, $deep);
+                        echo "will do after:$dir/$sub\n";
+                        $dirfuncAfter && call_user_func($dirfuncAfter, $dir.DS.$sub, $deep, $listDir[$sub]);
                     //}else {
                     //    echo "cannot recognize file:$dir/$sub\n";
                     }
@@ -111,7 +112,10 @@ class PicsetCommand  extends CConsoleCommand
             
         }
         
-        $dirfuncAfter && call_user_func($dirfuncAfter, $dir, $deep);
+        echo "will do final after:$dir/$sub\n";
+        if (is_dir($dir)) {
+            $dirfuncAfter && call_user_func($dirfuncAfter, $dir, $deep);
+        }
         return $listDir;    
     }     
     
@@ -270,8 +274,8 @@ class PicsetCommand  extends CConsoleCommand
         
         echo "this function at cwd=".getcwd()." target dir=$dir deep=$deep\n";
 
-        $allDirs = $this->scanAllDir($dir, $deep, null, null, function ($path, $deep)  {
-            $listDir = scandir($path);
+        $allDirs = $this->scanAllDir($dir, $deep, null, null, function ($path, $deep, $subDirs)  {
+            $listDir = $subDirs;//scandir($path);
 
             if (count($listDir) <= 1) {
                 echo "only one file:".json_encode($listDir)." and remove\n";
@@ -282,6 +286,11 @@ class PicsetCommand  extends CConsoleCommand
             // this will change dir, you should delete this
             $title = basename($path);
             $titleFile = 'title.'.$title.'.txt';
+            
+            if (file_exists($titleFile)) {
+                return;
+            }
+            
             file_put_contents($path.DS.$titleFile, $title);
             
             $dirBase64Name = $this->base64url_encode($title);
