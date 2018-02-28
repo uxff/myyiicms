@@ -15,7 +15,7 @@
 						<h2><a href="<?php echo $this->createUrl('image/page', array('id'=>$post->id));?>"><?php echo CHtml::encode($post->title);?></a></h2>
 						<p class="view_info">
 							<?php echo $post->copy_from?'<span>'.Yii::t('common','Copy From')."：  <em><a href='".$post->copy_url."' target='_blank'>".$post->copy_from."</a></em></span>":'';?>
-                            <?=date('Y-m-d H:i', $post->create_time)?>
+                            
 							<?php if($tags_len > 0):?>
 							<span class="tags">
 								<?php $i = 1; foreach((array)$post_tags as $ptag):?>
