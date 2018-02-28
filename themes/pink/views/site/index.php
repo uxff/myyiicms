@@ -55,7 +55,7 @@
 			<ul id="tab_image1" class="tab_image clear">
 				<?php foreach((array)$picsets[$i*2] as $in):?>				
 				<li>
-					<a href="<?php echo $this->createUrl('image/index', array('id'=>$in->id));?>">	
+					<a href="<?php echo $this->createUrl('image/page', array('id'=>$in->id));?>">	
 						<img src="<?php echo $in->attach_thumb;?>" style="width:auto;height:auto;max-width:200px;" alt="<?php echo $in->title;?>" />
 						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($in->title, 20);?></span></em>
 					</a>					
@@ -65,7 +65,7 @@
 			<ul id="tab_image2" class="tab_image clear">
 				<?php foreach((array)$picsets[$i*2+1] as $in):?>				
 				<li>
-					<a href="<?php echo $this->createUrl('image/index', array('id'=>$in->id));?>">	
+					<a href="<?php echo $this->createUrl('image/page', array('id'=>$in->id));?>">	
 						<img src="<?php echo $in->attach_thumb;?>" style="width:auto;height:auto;max-width:200px;" alt="<?php echo $in->title;?>" />
 						<em class="black_bg"><span><?php echo Helper::truncate_utf8_string($in->title, 20);?></span></em>
 					</a>					
