@@ -99,10 +99,10 @@ class PicsetCommand  extends CConsoleCommand
                         $filefunc && call_user_func($filefunc, $dir.DS.$sub, $deep);
                         $listDir[$sub] = filesize($dir.DS.$sub); 
                     }elseif(is_dir($dir.DS.$sub)){ 
-                        $dirfuncBefore && call_user_func($dirfuncBefore, $dir.DS.$sub, $deep);
+                        //$dirfuncBefore && call_user_func($dirfuncBefore, $dir.DS.$sub, $deep);
                         $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfuncBefore, $dirfuncAfter); 
-                        echo "will do after:$dir/$sub\n";
-                        $dirfuncAfter && call_user_func($dirfuncAfter, $dir.DS.$sub, $deep, $listDir[$sub]);
+                        //echo "will do after:$dir/$sub\n";
+                        //$dirfuncAfter && call_user_func($dirfuncAfter, $dir.DS.$sub, $deep, $listDir[$sub]);
                     //}else {
                     //    echo "cannot recognize file:$dir/$sub\n";
                     }
@@ -112,10 +112,8 @@ class PicsetCommand  extends CConsoleCommand
             
         }
         
-        echo "will do final after:$dir/$sub\n";
-        if (is_dir($dir)) {
-            $dirfuncAfter && call_user_func($dirfuncAfter, $dir, $deep);
-        }
+        echo "will do final after:$dir\n";
+        $dirfuncAfter && call_user_func($dirfuncAfter, $dir, $deep, $listDir);
         return $listDir;    
     }     
     
@@ -268,6 +266,7 @@ class PicsetCommand  extends CConsoleCommand
         
     }
     // rename dir, make config.json
+    // php protected/commands/index.php --dir=/data/wwwroot/myyiicms
     public function actionRenamedir($dir = '.', $deep = 10) {
         
         Yii::log('will start dir='.$dir.' deep='.$deep, 'warning', __METHOD__);
@@ -277,7 +276,7 @@ class PicsetCommand  extends CConsoleCommand
         $allDirs = $this->scanAllDir($dir, $deep, null, null, function ($path, $deep, $subDirs)  {
             $listDir = $subDirs;//scandir($path);
 
-            if (count($listDir) <= 1) {
+            if (count($listDir) == 0 || count($listDir) == 1 && substr($listDir[0], 0, 6) == 'thumb.') {
                 echo "only one file:".json_encode($listDir)." and remove\n";
                 rmdir($path);
                 return;
@@ -287,7 +286,9 @@ class PicsetCommand  extends CConsoleCommand
             $title = basename($path);
             $titleFile = 'title.'.$title.'.txt';
             
+            
             if (file_exists($titleFile)) {
+                // 
                 return;
             }
             
