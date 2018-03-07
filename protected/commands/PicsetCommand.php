@@ -99,12 +99,7 @@ class PicsetCommand  extends CConsoleCommand
                         $filefunc && call_user_func($filefunc, $dir.DS.$sub, $deep);
                         $listDir[$sub] = filesize($dir.DS.$sub); 
                     }elseif(is_dir($dir.DS.$sub)){ 
-                        //$dirfuncBefore && call_user_func($dirfuncBefore, $dir.DS.$sub, $deep);
                         $listDir[$sub] = $this->scanAllDir($dir.DS.$sub, $deep-1, $filefunc, $dirfuncBefore, $dirfuncAfter); 
-                        //echo "will do after:$dir/$sub\n";
-                        //$dirfuncAfter && call_user_func($dirfuncAfter, $dir.DS.$sub, $deep, $listDir[$sub]);
-                    //}else {
-                    //    echo "cannot recognize file:$dir/$sub\n";
                     }
                     
                 } 
@@ -112,7 +107,7 @@ class PicsetCommand  extends CConsoleCommand
             
         }
         
-        echo "will do final after:$dir\n";
+        echo "dir will done, will do final after:$dir\n";
         $dirfuncAfter && call_user_func($dirfuncAfter, $dir, $deep, $listDir);
         return $listDir;    
     }     
@@ -216,6 +211,7 @@ class PicsetCommand  extends CConsoleCommand
     static public function base64url_decode( $data ){
       return base64_decode( strtr( $data, '-_', '+/') . str_repeat('=', 3 - ( 3 + strlen( $data )) % 4 ));
     }
+
     public function actionCheckdir($dir = '.', $out='filecheck.list.csv') {
         
         $csvFile = fopen($out, 'w');
@@ -226,19 +222,33 @@ class PicsetCommand  extends CConsoleCommand
 
         $this->configuredPicset = array();
         $this->selectedPicset = [];
+        $selectedThumbGif = [];
         
-        $this->scanAllDir($dir, 100, function ($path, $deep) use (&$csvFile, &$fileCount, &$byteCount) {
+        $this->scanAllDir($dir, 100, function ($path, $deep) use (&$csvFile, &$fileCount, &$byteCount, &$selectedThumbGif) {
 
-            //if ($fileCount > 10) {
-            //    return;
-            //}
             if (($fileCount+1)%1000==0) {
                 echo date('Y-m-d H:i:s ')."checking ".($fileCount+1).", bytes=$byteCount\n";
                 fflush($csvFile);
                 //unset($this->configuredPicset);
                 //unset($this->selectedPicset);
             }
+            
+            //// will rm the thumb.gif , filesize==43
+            //if (strtolower(substr($path, strlen($path)-9, 9)) == 'thumb.gif') {
+            //    
+            //    ++$fileCount;
+            //    $fileMd5 = ''; //$fileMd5 = md5_file($path);
+            //    $fileSize = filesize($path);
+            //    $byteCount += $fileSize;
+            //    if ($fileSize <= 43) {
+            //        fputcsv($csvFile, [$fileMd5, $fileSize, $path]);
+            //        //unlink($path);
+            //        $selectedThumbGif[] = $path;
+            //    }
+            //}
+            //return;
 
+            // will calc md5 and insert into db
             $suffixs = explode('.', $path);
             if (count($suffixs) > 1) {
                 if (in_array(strtolower($suffixs[count($suffixs)-1]), ['jpg', 'gif', 'png', 'jpeg'])) {
@@ -264,6 +274,9 @@ class PicsetCommand  extends CConsoleCommand
         
         fclose($csvFile);
         
+        //foreach ($selectedThumbGif as $gifFile) {
+        //    unlink($gifFile);
+        //}
     }
     // rename dir, make config.json
     // php protected/commands/index.php --dir=/data/wwwroot/myyiicms
