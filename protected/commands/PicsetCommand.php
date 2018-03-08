@@ -107,7 +107,7 @@ class PicsetCommand  extends CConsoleCommand
             
         }
         
-        echo "dir will done, will do final after:$dir\n";
+        echo "dir will done: $dir\n";
         $dirfuncAfter && call_user_func($dirfuncAfter, $dir, $deep, $listDir);
         return $listDir;    
     }     
@@ -278,20 +278,20 @@ class PicsetCommand  extends CConsoleCommand
         //    unlink($gifFile);
         //}
     }
-    // rename dir, make config.json
+    // rename dir, make config.json; if exist config.json, return
     // php protected/commands/index.php --dir=/data/wwwroot/myyiicms
     public function actionRenamedir($dir = '.', $deep = 10) {
         
         Yii::log('will start dir='.$dir.' deep='.$deep, 'warning', __METHOD__);
         
-        echo "this function at cwd=".getcwd()." target dir=$dir deep=$deep\n";
+        echo "this function at cwd=".getcwd()." target dir=$dir deep=$deep os=".PHP_OS." \n";
 
         $allDirs = $this->scanAllDir($dir, $deep, null, null, function ($path, $deep, $subDirs)  {
             $listDir = $subDirs;//scandir($path);
 
             if (count($listDir) == 0 || count($listDir) == 1 && substr($listDir[0], 0, 6) == 'thumb.') {
                 echo "only one file:".json_encode($listDir)." and remove\n";
-                rmdir($path);
+                //rmdir($path);
                 return;
             }
             
@@ -299,10 +299,12 @@ class PicsetCommand  extends CConsoleCommand
             $title = basename($path);
             $titleFile = 'title.'.$title.'.txt';
             
-            
-            if (file_exists($titleFile)) {
-                // 
-                return;
+            if (file_exists($path.DS.'config.json')) {
+                $config = json_decode(file_get_contents($path.DS.'config.json'), true);
+                if ($config['title']) {
+                    echo "no need to rename because $path/config.json exist title:{$config['title']}\n";
+                    return;
+                }
             }
             
             file_put_contents($path.DS.$titleFile, $title);
@@ -319,6 +321,6 @@ class PicsetCommand  extends CConsoleCommand
         });
         
 
-        echo 'all='.json_encode($allDirs)."\n";
+        echo 'all count='.count($allDirs)."\n";
     }
 }
