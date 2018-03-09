@@ -24,6 +24,7 @@ class PicsetCommand  extends CConsoleCommand
     }
 */
 
+    // scan all dir, select config.json, select picsets, save picsets
     public function actionIndex($dir = '.', $deep = 1, $webroot = '', $cata = 0, $saveLimit = 10) {
         Yii::log('will start dir='.$dir.' deep='.$deep.' webroot='.$webroot, 'warning', __METHOD__);
         
