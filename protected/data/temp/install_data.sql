@@ -10,13 +10,26 @@ INSERT INTO `#@__catalog` VALUES('1','1','0','资讯新闻','','','','','','','0
 INSERT INTO `#@__catalog` VALUES('2','1','1','社会新闻','','','','','','','2','0','Y','','1379545199','1404109846');
 INSERT INTO `#@__catalog` VALUES('3','1','1','科技新闻','','','','','','','1','0','Y','','1379545248','1407122169');
 INSERT INTO `#@__catalog` VALUES('4','2','0','性感美女','','','','','','','0','0','Y','','1379545330','1394517482');
-INSERT INTO `#@__catalog` VALUES('5','2','4','美女写真','','','','','','','1','0','Y','','1379545388','1394517482');
 INSERT INTO `#@__catalog` VALUES('6','2','4','明星图片','','','','','','','0','0','Y','','1379545435','1394517482');
 INSERT INTO `#@__catalog` VALUES('8','2','0','动漫卡通','','','','','','','0','0','Y','','0','1399616730');
 INSERT INTO `#@__catalog` VALUES('9','2','8','动漫图片','','','','','','','0','0','Y','','0','1399616723');
 INSERT INTO `#@__catalog` VALUES('10','2','0','风景壁纸','','','','','','','0','0','Y','','1400489000','1407117706');
 INSERT INTO `#@__catalog` VALUES('11','2','0','搞笑内涵','','','','','','','0','0','Y','','1400489000','1407117706');
 INSERT INTO `#@__catalog` VALUES('12','1','0','创意奇趣','','','','','','','0','0','Y','','1400828336','1407120434');
+
+INSERT INTO `#@__catalog` VALUES('13','2','4','美女写真','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('14','2','4','黑丝诱惑','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('15','2','4','清纯可爱','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('16','2','4','极品校花','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('17','2','4','长腿模特','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('18','2','4','甜蜜宝贝','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('19','2','4','私房密照','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('20','2','4','丝袜美腿','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('21','2','4','少女幻想','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('22','2','4','东方丽人','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('23','2','4','楚楚动人','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('24','2','4','宅男女神','','','','','','','1','0','Y','','1379545388','1394517482');
+INSERT INTO `#@__catalog` VALUES('25','2','4','公司白领','','','','','','','1','0','Y','','1379545388','1394517482');
 
 -- 导航 --
 INSERT INTO `#@__menu` VALUES('1','首页','/','index','Y','0','0','N');
@@ -54,12 +67,12 @@ INSERT INTO `#@__setting` VALUES('email','email_totest','');
 INSERT INTO `#@__setting` VALUES('email','email_username','');
 INSERT INTO `#@__setting` VALUES('base','safe_str','!(*&%');
 INSERT INTO `#@__setting` VALUES('seo','seo_description','');
-INSERT INTO `#@__setting` VALUES('seo','seo_keywords','姗妮图库,性感美女,风景壁纸,搞笑内涵,创意奇闻');
+INSERT INTO `#@__setting` VALUES('seo','seo_keywords','姗妮图库,性感美女,风景壁纸,搞笑内涵,创意奇闻,sunnygirls');
 INSERT INTO `#@__setting` VALUES('seo','seo_title','姗妮图库');
 INSERT INTO `#@__setting` VALUES('base','site_closed_summary','系统维护中，请稍候......');
 INSERT INTO `#@__setting` VALUES('base','site_copyright','Copyright @ 2014-2015');
 INSERT INTO `#@__setting` VALUES('base','site_domain','/');
-INSERT INTO `#@__setting` VALUES('base','site_icp','Copyright Reserved');
+INSERT INTO `#@__setting` VALUES('base','site_icp','');
 INSERT INTO `#@__setting` VALUES('base','site_name','姗妮图库');
 INSERT INTO `#@__setting` VALUES('base','site_stats','');
 INSERT INTO `#@__setting` VALUES('cache','cache_status','open');
