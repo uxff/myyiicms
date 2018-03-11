@@ -8,6 +8,7 @@
 		<div class="intro_title">
             <p data-line="first line">
             <?php foreach ($image_cat2 as $k=>$image_cat):?>
+                <?php if ($k>=12) {continue;};?>
                 <a href="<?php echo $image_cat['redirect_url'] ? :$this->createUrl('image/index', array('catalog_id'=>$image_cat['id']))?>"><?=$image_cat['catalog_name']?></a>
             <?php endforeach;?>
             </p>

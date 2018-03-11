@@ -55,7 +55,7 @@ class SiteController extends FrontBase
 		}
 		
         //图集类别
-        $image_cat2 = Catalog::model()->findAll('type=2 and parent_id !=0', array('limit'=>12));
+        $image_cat2 = Catalog::model()->findAll('type=2 and parent_id !=0 and status="Y"', array('limit'=>12));
         shuffle($image_cat2);
         
         
