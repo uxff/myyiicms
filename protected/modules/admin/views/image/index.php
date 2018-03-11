@@ -46,10 +46,10 @@ $(document).ready(function(){
     <tr class="tb_list" <?php if($row->status=='N'):?>style=" background:#F0F7FC"<?php endif?>>
       <td ><input type="checkbox" name="id[]" value="<?php echo $row->id?>">
         <?php echo $row->id?></td>
-      <td ><img src="/<?=$row->attach_thumb?>" style="width:auto;height:auto;max-height:60px;"></td>
+      <td ><img src="<?=$row->attach_thumb[0]=='/'?$row->attach_thumb:(substr($row->attach_thumb,0,4)=='http'?$row->attach_thumb:'/'.$row->attach_thumb)?>" style="width:auto;height:auto;max-height:60px;"></td>
       <td ><a href="<?php echo $this->createUrl('/image/view', array('id'=>$row['id'])); ?>" title="<?php echo $row->title; ?>" target="_blank" style="<?php echo $this->formatStyle($row->title_style);?>"><?php echo Helper::truncate_utf8_string($row->title, 20);?></a><br />
         </td>
-      <td ><?php echo $row->catalog->catalog_name?></td>
+      <td ><?php echo $row->catalog->catalog_name?>(<?=$row->catalog->id?>)</td>
       <td ><?=count($row->image_list)?></td>
       <td><?php if($row->status == 'Y'){echo Yii::t('admin','Show');}else{echo "<span class='red'>".Yii::t('admin','Hidden')."</span>";}?></td>
       <td><?php if($row->commend == 'Y'){echo Yii::t('admin','Yes');}else{echo Yii::t('admin','No');}?></td>
