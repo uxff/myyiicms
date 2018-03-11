@@ -1,4 +1,5 @@
 #!/bin/bash
+# run before install
 mkdir ./assets -m 777
 chmod a+w ./assets/ -R
 mkdir ./protected/runtime -m 777
