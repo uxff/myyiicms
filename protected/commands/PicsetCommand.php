@@ -118,6 +118,7 @@ class PicsetCommand  extends CConsoleCommand
             'title' => basename($dirPath),
             'thumb' => '',//$dirPath.DS.'thumb.jpg',
             'images' => [],
+            'originDir' => $dirPath,
         ];
         
         // sub is thumbs dir
@@ -173,6 +174,9 @@ class PicsetCommand  extends CConsoleCommand
             if ($i >= $limit) {
                 break;
             }
+            if (file_exists($picset['originDir'].DS.'uploaded')) {
+                continue;
+            }
 
             $model = new Image();
             $model->create_time = time();
@@ -194,6 +198,8 @@ class PicsetCommand  extends CConsoleCommand
                 $error = $model->getErrors();
                 print_r($error);
             }
+            
+            file_put_contents($picset['originDir'].DS.'uploaded', '1');
             
             ++$i;
             if ($i%100 == 0) {
