@@ -71,7 +71,7 @@ INSERT INTO `#@__setting` VALUES('email','email_timeout','2');
 INSERT INTO `#@__setting` VALUES('email','email_totest','');
 INSERT INTO `#@__setting` VALUES('email','email_username','');
 INSERT INTO `#@__setting` VALUES('base','safe_str','!(*&%');
-INSERT INTO `#@__setting` VALUES('seo','seo_description','');
+INSERT INTO `#@__setting` VALUES('seo','seo_description','姗妮图库,性感美女,风景壁纸,搞笑内涵,创意奇闻,sunnygirls');
 INSERT INTO `#@__setting` VALUES('seo','seo_keywords','姗妮图库,性感美女,风景壁纸,搞笑内涵,创意奇闻,sunnygirls');
 INSERT INTO `#@__setting` VALUES('seo','seo_title','姗妮图库');
 INSERT INTO `#@__setting` VALUES('base','site_closed_summary','系统维护中，请稍候......');

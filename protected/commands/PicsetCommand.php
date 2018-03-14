@@ -175,6 +175,7 @@ class PicsetCommand  extends CConsoleCommand
                 break;
             }
             if (file_exists($picset['originDir'].DS.'uploaded')) {
+                echo "dir is already uploaded:{$picset['originDir']}\n";
                 continue;
             }
 
