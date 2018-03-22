@@ -625,4 +625,15 @@ CREATE TABLE `#@__video` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='视频管理表';
 
-
+-- 多域名链接表 --
+DROP TABLE IF EXISTS `#@__outerlink`;
+CREATE TABLE `#@__outerlink` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `domain` varchar(64) NOT NULL COMMENT '域名',
+  `link` varchar(256) NOT NULL DEFAULT '',
+  `name` varchar(64) NOT NULL DEFAULT '',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `owner` varchar(32) NOT NULL DEFAULT '',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='domains and outer links';
