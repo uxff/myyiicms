@@ -630,10 +630,10 @@ DROP TABLE IF EXISTS `#@__outerlink`;
 CREATE TABLE `#@__outerlink` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `domain` varchar(64) NOT NULL COMMENT '域名',
-  `link` varchar(256) NOT NULL DEFAULT '',
-  `name` varchar(64) NOT NULL DEFAULT '',
-  `status` tinyint(4) NOT NULL DEFAULT '1',
-  `owner` varchar(32) NOT NULL DEFAULT '',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0',
+  `link` varchar(256) NOT NULL DEFAULT '' COMMENT '链接',
+  `name` varchar(64) NOT NULL DEFAULT '' COMMENT '名称',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态',
+  `owner` varchar(32) NOT NULL DEFAULT '' COMMENT '所属',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='domains and outer links';
