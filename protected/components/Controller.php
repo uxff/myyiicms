@@ -291,4 +291,18 @@ html,body,div,p,a,h3{margin:0;padding:0;}
 	    	exit( $header . $body2 . $footer );
 	    }
 	}
+    
+    public function getDomains() {
+        $theLinks = Outerlink::model()->findAll('status=1');
+        $theLinksArr = [];
+        foreach ($theLinks as $theLink) {
+            $theLinksArr[] = [
+                'domain' => $theLink->domain,
+                'name' => $theLink->name,
+                'link' => $theLink->link,
+            ];
+        }
+        
+        return $theLinksArr;
+    }
 }
