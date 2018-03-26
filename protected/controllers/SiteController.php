@@ -77,6 +77,8 @@ class SiteController extends FrontBase
 		//$video_new = Video::model()->findAll("status=:status AND catalog_id = 13 ORDER BY id DESC Limit 20", array(':status'=>'Y'));
 		//热门视频
 		//$video_hot = Video::model()->findAll("status=:status AND catalog_id = 13 ORDER BY view_count DESC, video_score DESC, id DESC Limit 20", array(':status'=>'Y'));
+        
+        $domains = $this->getDomains();
 		
 		//友情链接
 		$link_logos = Link::model()->findAll("logo !='' AND status_is='Y'", array('order'=>'sortorder ASC, id DESC'));
@@ -98,6 +100,7 @@ class SiteController extends FrontBase
 					//'video_hot',	
                     'image_cat2',
                     'picsets',
+                    'domains',
 			)
 		));
 	}

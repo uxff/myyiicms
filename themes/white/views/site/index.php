@@ -13,7 +13,7 @@
             <?php endforeach;?>
             </p>
             <p>
-                <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">山东美女</a>
+                <a href="<?php echo $this->createUrlWithDomain($domains, 'page/index', array('id'=>'feature'))?>">山东美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">江苏美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">浙江美女</a>
                 <a href="<?php echo $this->createUrl('page/index', array('id'=>'feature'))?>">天津美女</a>

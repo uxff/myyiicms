@@ -292,7 +292,7 @@ html,body,div,p,a,h3{margin:0;padding:0;}
 	    }
 	}
     
-    public function getDomains() {
+    public function getDomains($includeSelf = false) {
         $theLinks = Outerlink::model()->findAll('status=1');
         $theLinksArr = [];
         foreach ($theLinks as $theLink) {
@@ -303,6 +303,20 @@ html,body,div,p,a,h3{margin:0;padding:0;}
             ];
         }
         
+        if ($includeSelf) {
+            $theLinksArr[] = [
+                'domain' => $_SERVER['HTTP_HOST'],
+                'name' => '',
+                'link' => $_SERVER['SERVER_NAME'],
+            ];
+        }
+        
         return $theLinksArr;
+    }
+    
+    public function createUrlWithDomain($domains, $route, $params = []) {
+        shuffle($domains);
+        $domain = array_pop($domains);
+        return 'http://'.$domain['domain'].$this->createUrl($route, $params);
     }
 }

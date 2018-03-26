@@ -21,7 +21,7 @@ class Outerlink extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{outer_link}}';
+		return '{{outerlink}}';
 	}
 
 	/**
