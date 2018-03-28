@@ -3386,3 +3386,14 @@ REPLACE INTO `#@__video` VALUES('4','窃听风云3','16','uploads/images/201406/
 REPLACE INTO `#@__video` VALUES('5','终结者4','16','uploads/images/201406/0bb513c708b.jpg','','chinese','comedy','10.0','','','','0.00','1407120480','1403148363','11','0','{\"t\":1,\"s\":[0,0,0,0,1]}','Y','','','');
 REPLACE INTO `#@__video` VALUES('6','孤胆保镖','16','uploads/images/201406/566eb360159.jpg','107','chinese','active','8.0','','','<p>电影</p>','0.00','1411527190','1403148418','27','0','{\"t\":2,\"s\":[0,0,1,0,1]}','Y','','','电影');
 
+
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('anhuigirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('hunangirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('jiangxigirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('shandonggirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('guangxigirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('guizhougirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('sichuangirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('hubeigirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('shanxigirl.com');
+INSERT INTO `#@__outerlink` (`domain`) VALUES ('fujiangirl.com');
