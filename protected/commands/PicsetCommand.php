@@ -288,7 +288,7 @@ class PicsetCommand  extends CConsoleCommand
     }
     // rename dir, make config.json; if exist config.json, return
     // php protected/commands/index.php --dir=/data/wwwroot/myyiicms
-    public function actionRenamedir($dir = '.', $deep = 10) {
+    public function actionRenamedirAsBase64($dir = '.', $deep = 10) {
         
         Yii::log('will start dir='.$dir.' deep='.$deep, 'warning', __METHOD__);
         
@@ -324,6 +324,60 @@ class PicsetCommand  extends CConsoleCommand
             file_put_contents($path.DS.'config.json', json_encode(['title'=>$titleUtf8]));
             
             file_put_contents($path.DS.$titleBasedFile, $title);
+            
+            rename($path, dirname($path).DS.$dirBase64Name);
+        });
+        
+
+        echo 'all count='.count($allDirs)."\n";
+    }
+    // rename dir, make config.json; if exist config.json, return
+    // php protected/commands/index.php picset renamedirAsNormal --dir=/data/wwwroot/myyiicms
+    public function actionRenamedirAsNormal($dir = '.', $deep = 10) {
+        
+        Yii::log('will start dir='.$dir.' deep='.$deep, 'warning', __METHOD__);
+        
+        echo "this function at cwd=".getcwd()." target dir=$dir deep=$deep os=".PHP_OS." \n";
+        
+        $dirsNeedRename = [];
+
+        $allDirs = $this->scanAllDir($dir, $deep, null, null, function ($path, $deep, $subDirs)  {
+            $listDir = $subDirs;//scandir($path);
+
+            if (count($listDir) == 0 || count($listDir) == 1 && substr($listDir[0], 0, 6) == 'thumb.') {
+                echo "only one file:".json_encode($listDir)." and remove\n";
+                //rmdir($path);
+                return;
+            }
+            
+            // this will change dir, you should delete this
+            $title = basename($path);
+            //$titleFile = 'title.'.$title.'.txt';
+            
+            if (file_exists($path.DS.'config.json')) {
+                $config = @json_decode(file_get_contents($path.DS.'config.json'), true);
+                if ($config['title']) {
+                    $parent = dirname($path);
+                    echo "need to rename because $path/config.json exist title:{$config['title']} path.basename:{$title}\n";
+                    if ($config['title'] != $title) {
+                        echo "need rename:{$parent}/{$title}->{$parent}/{$config['title']}\n";
+                        
+                    }
+                    
+                    //return;
+                }
+            }
+            return;
+            
+            //file_put_contents($path.DS.$titleFile, $title);
+            
+            $dirBase64Name = $this->base64url_encode($title);
+            $titleBasedFile = 'titlebase64.'.$dirBase64Name.'.txt';
+            
+            //$titleUtf8 = mb_convert_encoding($title, 'utf8', 'gbk');
+            //file_put_contents($path.DS.'config.json', json_encode(['title'=>$titleUtf8]));
+            
+            //file_put_contents($path.DS.$titleBasedFile, $title);
             
             rename($path, dirname($path).DS.$dirBase64Name);
         });
