@@ -358,10 +358,11 @@ class PicsetCommand  extends CConsoleCommand
                 $config = @json_decode(file_get_contents($path.DS.'config.json'), true);
                 if ($config['title']) {
                     $parent = dirname($path);
-                    echo "need to rename because $path/config.json exist title:{$config['title']} path.basename:{$title}\n";
+                    echo "need to rename $path/config.json exist title:{$config['title']} path.basename:{$title}\n";
                     if ($config['title'] != $title) {
-                        echo "need rename:{$parent}/{$title}->{$parent}/{$config['title']}\n";
-                        
+                        $titleGbk = mb_convert_encoding($config['title'], 'gbk', 'utf8');
+                        echo "need rename:{$parent}/{$title}->{$parent}/{$titleGbk}\n";
+                        rename($parent.DS.$title, $parent.DS.$titleGbk);
                     }
                     
                     //return;
